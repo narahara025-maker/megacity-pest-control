@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-    <!-- =========================
-         BASIC SETTINGS
-    ========================== -->
+    <!-- =====================================================
+         BASIC WEBSITE SETTINGS
+    ====================================================== -->
 
     <meta charset="UTF-8">
 
@@ -12,10 +13,10 @@
           content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="Megacity Pest Control Services provides professional pest control solutions for homes, offices, shops and commercial properties in Hyderabad.">
+          content="Megacity Pest Control Services - Professional pest control services for homes, offices, shops and commercial properties in Hyderabad.">
 
     <meta name="keywords"
-          content="pest control Hyderabad, pest control services, cockroach control, termite control, mosquito control, rat control, Megacity Pest Control">
+          content="Megacity Pest Control, pest control Hyderabad, cockroach control, termite control, mosquito control, rat control">
 
     <meta name="author"
           content="Megacity Pest Control Services">
@@ -28,9 +29,9 @@
     </title>
 
 
-    <!-- =========================
-         FONTS
-    ========================== -->
+    <!-- =====================================================
+         GOOGLE FONT
+    ====================================================== -->
 
     <link rel="preconnect"
           href="https://fonts.googleapis.com">
@@ -43,39 +44,37 @@
           rel="stylesheet">
 
 
-    <!-- =========================
-         WEBSITE CSS
-    ========================== -->
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
 
     <style>
 
-        /* =========================================
-           GLOBAL VARIABLES
-        ========================================== */
+        /* =================================================
+           COLORS
+        ================================================= */
 
         :root {
 
-            --primary: #063b2e;
+            --green: #063b2e;
 
-            --primary-light: #0b5a45;
+            --green-light: #0b5a45;
 
-            --primary-dark: #04291f;
+            --green-dark: #04291f;
 
-            --accent: #f2b84b;
+            --gold: #f2b84b;
 
-            --background: #ffffff;
-
-            --background-light: #f5faf7;
+            --white: #ffffff;
 
             --cream: #fffaf0;
 
+            --light: #f5faf7;
+
             --text: #17211d;
 
-            --text-light: #66736d;
+            --gray: #66736d;
 
             --border: #e4ebe7;
-
-            --white: #ffffff;
 
             --shadow:
                 0 15px 45px rgba(6, 59, 46, 0.10);
@@ -86,9 +85,9 @@
         }
 
 
-        /* =========================================
+        /* =================================================
            RESET
-        ========================================== */
+        ================================================= */
 
         * {
 
@@ -108,11 +107,14 @@
 
         body {
 
-            font-family: "Inter", Arial, sans-serif;
-
-            background: var(--background);
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
 
             color: var(--text);
+
+            background: var(--white);
 
             line-height: 1.6;
         }
@@ -134,7 +136,10 @@
         }
 
 
-        button {
+        button,
+        input,
+        select,
+        textarea {
 
             font-family: inherit;
         }
@@ -150,9 +155,9 @@
         }
 
 
-        /* =========================================
+        /* =================================================
            HEADER
-        ========================================== */
+        ================================================= */
 
         .header {
 
@@ -162,11 +167,14 @@
 
             z-index: 1000;
 
-            background: rgba(255, 255, 255, 0.96);
+            background:
+                rgba(255,255,255,0.96);
 
-            backdrop-filter: blur(15px);
+            backdrop-filter:
+                blur(15px);
 
-            border-bottom: 1px solid var(--border);
+            border-bottom:
+                1px solid var(--border);
         }
 
 
@@ -186,7 +194,7 @@
 
         /* LOGO */
 
-        .logo-link {
+        .brand {
 
             display: flex;
 
@@ -196,7 +204,7 @@
         }
 
 
-        .logo {
+        .brand img {
 
             width: 55px;
 
@@ -206,17 +214,11 @@
         }
 
 
-        .logo-text {
-
-            line-height: 1.1;
-        }
-
-
-        .logo-text strong {
+        .brand-name strong {
 
             display: block;
 
-            color: var(--primary);
+            color: var(--green);
 
             font-size: 18px;
 
@@ -226,11 +228,11 @@
         }
 
 
-        .logo-text span {
+        .brand-name span {
 
             display: block;
 
-            color: var(--primary-light);
+            color: var(--green-light);
 
             font-size: 10px;
 
@@ -239,8 +241,6 @@
             letter-spacing: 1.5px;
 
             text-transform: uppercase;
-
-            margin-top: 5px;
         }
 
 
@@ -260,57 +260,57 @@
 
         .nav-menu a {
 
+            color: #37443f;
+
             font-size: 14px;
 
             font-weight: 700;
 
-            color: #37443f;
-
-            transition: 0.2s ease;
+            transition: 0.2s;
         }
 
 
         .nav-menu a:hover {
 
-            color: var(--primary-light);
+            color: var(--green-light);
         }
 
 
-        .nav-button {
+        .nav-quote {
 
-            background: var(--primary);
+            color: white !important;
 
-            color: var(--white) !important;
+            background: var(--green);
 
-            padding: 12px 19px;
+            padding: 12px 20px;
 
             border-radius: 50px;
         }
 
 
-        .nav-button:hover {
+        .nav-quote:hover {
 
-            background: var(--primary-light);
+            background: var(--green-light);
         }
 
 
-        /* MOBILE MENU BUTTON */
+        /* MOBILE MENU */
 
         .menu-button {
 
             display: none;
 
-            border: none;
-
-            background: var(--primary);
-
-            color: white;
-
             width: 44px;
 
             height: 44px;
 
+            border: none;
+
             border-radius: 12px;
+
+            background: var(--green);
+
+            color: white;
 
             font-size: 22px;
 
@@ -318,17 +318,19 @@
         }
 
 
-        /* =========================================
-           HERO SECTION
-        ========================================== */
+        /* =================================================
+           HERO
+        ================================================= */
 
         .hero {
+
+            padding: 90px 0 80px;
 
             background:
 
                 radial-gradient(
                     circle at 85% 15%,
-                    rgba(242, 184, 75, 0.28),
+                    rgba(242,184,75,0.28),
                     transparent 30%
                 ),
 
@@ -337,8 +339,6 @@
                     #f7fbf8,
                     #fffaf0
                 );
-
-            padding: 90px 0 80px;
         }
 
 
@@ -346,7 +346,8 @@
 
             display: grid;
 
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns:
+                1.1fr 0.9fr;
 
             align-items: center;
 
@@ -362,7 +363,7 @@
 
             gap: 9px;
 
-            color: var(--primary-light);
+            color: var(--green-light);
 
             font-size: 13px;
 
@@ -384,21 +385,18 @@
 
             height: 3px;
 
-            background: var(--accent);
+            background: var(--gold);
 
             border-radius: 10px;
         }
 
 
-        .hero-title {
+        .hero h1 {
 
-            color: var(--primary);
+            color: var(--green);
 
-            font-size: clamp(
-                42px,
-                6vw,
-                72px
-            );
+            font-size:
+                clamp(42px, 6vw, 70px);
 
             line-height: 1.02;
 
@@ -408,19 +406,17 @@
         }
 
 
-        .hero-description {
+        .hero-text {
 
             max-width: 650px;
 
-            color: var(--text-light);
+            color: var(--gray);
 
             font-size: 18px;
 
             margin-bottom: 30px;
         }
 
-
-        /* HERO BUTTONS */
 
         .button-group {
 
@@ -440,7 +436,7 @@
 
             justify-content: center;
 
-            gap: 9px;
+            gap: 8px;
 
             padding: 14px 22px;
 
@@ -450,13 +446,13 @@
 
             border: 2px solid transparent;
 
-            transition: 0.2s ease;
+            transition: 0.2s;
         }
 
 
         .button-primary {
 
-            background: var(--primary);
+            background: var(--green);
 
             color: white;
         }
@@ -464,9 +460,10 @@
 
         .button-primary:hover {
 
-            background: var(--primary-light);
+            background: var(--green-light);
 
-            transform: translateY(-2px);
+            transform:
+                translateY(-2px);
         }
 
 
@@ -474,7 +471,7 @@
 
             background: white;
 
-            color: var(--primary);
+            color: var(--green);
 
             border-color: var(--border);
         }
@@ -482,19 +479,20 @@
 
         .button-secondary:hover {
 
-            border-color: var(--primary-light);
+            border-color:
+                var(--green-light);
 
-            transform: translateY(-2px);
+            transform:
+                translateY(-2px);
         }
 
-
-        /* HERO CARD */
 
         .hero-card {
 
             background: white;
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
             border-radius: 30px;
 
@@ -510,7 +508,8 @@
 
             max-width: 100%;
 
-            margin: 0 auto 25px;
+            margin:
+                0 auto 25px;
         }
 
 
@@ -518,7 +517,8 @@
 
             display: grid;
 
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns:
+                repeat(3,1fr);
 
             gap: 10px;
         }
@@ -526,13 +526,13 @@
 
         .hero-feature {
 
-            background: var(--background-light);
+            background: var(--light);
+
+            border-radius: 14px;
 
             padding: 15px 8px;
 
             text-align: center;
-
-            border-radius: 14px;
         }
 
 
@@ -540,7 +540,7 @@
 
             display: block;
 
-            color: var(--primary);
+            color: var(--green);
 
             font-size: 16px;
         }
@@ -548,15 +548,15 @@
 
         .hero-feature span {
 
-            color: var(--text-light);
+            color: var(--gray);
 
             font-size: 10px;
         }
 
 
-        /* =========================================
+        /* =================================================
            GENERAL SECTION
-        ========================================== */
+        ================================================= */
 
         .section {
 
@@ -570,19 +570,17 @@
 
             text-align: center;
 
-            margin: 0 auto 50px;
+            margin:
+                0 auto 50px;
         }
 
 
         .section-heading h2 {
 
-            color: var(--primary);
+            color: var(--green);
 
-            font-size: clamp(
-                32px,
-                4vw,
-                48px
-            );
+            font-size:
+                clamp(32px,4vw,48px);
 
             line-height: 1.1;
 
@@ -594,20 +592,20 @@
 
         .section-heading p {
 
-            color: var(--text-light);
+            color: var(--gray);
         }
 
 
-        /* =========================================
+        /* =================================================
            SERVICES
-        ========================================== */
+        ================================================= */
 
         .services-grid {
 
             display: grid;
 
             grid-template-columns:
-                repeat(3, 1fr);
+                repeat(3,1fr);
 
             gap: 22px;
         }
@@ -617,27 +615,29 @@
 
             background: white;
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
-            border-radius: var(--radius);
+            border-radius:
+                var(--radius);
 
             padding: 30px;
 
-            transition: 0.25s ease;
+            transition: 0.25s;
 
             box-shadow:
                 0 8px 30px
-                rgba(6, 59, 46, 0.04);
+                rgba(6,59,46,0.04);
         }
 
 
         .service-card:hover {
 
-            transform: translateY(-7px);
+            transform:
+                translateY(-7px);
 
-            box-shadow: var(--shadow);
-
-            border-color: #cbded5;
+            box-shadow:
+                var(--shadow);
         }
 
 
@@ -663,7 +663,7 @@
 
         .service-card h3 {
 
-            color: var(--primary);
+            color: var(--green);
 
             font-size: 20px;
 
@@ -673,19 +673,19 @@
 
         .service-card p {
 
-            color: var(--text-light);
+            color: var(--gray);
 
             font-size: 14px;
         }
 
 
-        /* =========================================
-           ABOUT SECTION
-        ========================================== */
+        /* =================================================
+           ABOUT
+        ================================================= */
 
         .about {
 
-            background: var(--primary);
+            background: var(--green);
 
             color: white;
         }
@@ -706,17 +706,14 @@
 
         .about .eyebrow {
 
-            color: var(--accent);
+            color: var(--gold);
         }
 
 
         .about h2 {
 
-            font-size: clamp(
-                34px,
-                4vw,
-                50px
-            );
+            font-size:
+                clamp(34px,4vw,50px);
 
             line-height: 1.1;
 
@@ -748,15 +745,13 @@
 
             gap: 10px;
 
-            align-items: flex-start;
-
             color: #edf7f3;
         }
 
 
         .check {
 
-            color: var(--accent);
+            color: var(--gold);
 
             font-weight: 900;
         }
@@ -778,7 +773,7 @@
 
         .about-card h3 {
 
-            color: var(--primary);
+            color: var(--green);
 
             margin-bottom: 18px;
         }
@@ -796,7 +791,7 @@
 
         .about-list li {
 
-            background: #f5faf7;
+            background: var(--light);
 
             padding: 14px;
 
@@ -806,16 +801,16 @@
         }
 
 
-        /* =========================================
-           PROCESS
-        ========================================== */
+        /* =================================================
+           HOW IT WORKS
+        ================================================= */
 
         .process-grid {
 
             display: grid;
 
             grid-template-columns:
-                repeat(3, 1fr);
+                repeat(3,1fr);
 
             gap: 22px;
         }
@@ -823,9 +818,10 @@
 
         .process-card {
 
-            background: #f7faf8;
+            background: var(--light);
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
             border-radius: 22px;
 
@@ -843,9 +839,9 @@
 
             place-items: center;
 
-            background: var(--accent);
+            background: var(--gold);
 
-            color: var(--primary);
+            color: var(--green);
 
             border-radius: 50%;
 
@@ -857,7 +853,7 @@
 
         .process-card h3 {
 
-            color: var(--primary);
+            color: var(--green);
 
             margin-bottom: 8px;
         }
@@ -865,41 +861,229 @@
 
         .process-card p {
 
-            color: var(--text-light);
+            color: var(--gray);
 
             font-size: 14px;
         }
 
 
-        /* =========================================
-           SERVICE AREA
-        ========================================== */
+        /* =================================================
+           CUSTOMER ENQUIRY FORM
+        ================================================= */
 
-        .areas {
+        .enquiry-section {
 
             background: var(--cream);
         }
 
 
-        .areas-box {
+        .form-wrapper {
+
+            max-width: 900px;
+
+            margin: auto;
 
             background: white;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 28px;
+
+            padding: 40px;
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .form-title {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+
+        .form-title h2 {
+
+            color: var(--green);
+
+            font-size: 35px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .form-title p {
+
+            color: var(--gray);
+        }
+
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+            gap: 18px;
+        }
+
+
+        .form-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+
+        .form-group.full {
+
+            grid-column:
+                1 / -1;
+        }
+
+
+        .form-group label {
+
+            color: var(--green);
+
+            font-size: 13px;
+
+            font-weight: 800;
+        }
+
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+
+            width: 100%;
+
+            padding: 14px 15px;
+
+            border:
+                1px solid #dce5e1;
+
+            border-radius: 12px;
+
+            outline: none;
+
+            background: #fbfdfc;
+
+            color: var(--text);
+
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+
+            border-color:
+                var(--green-light);
+
+            background: white;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(11,90,69,0.08);
+        }
+
+
+        .form-group textarea {
+
+            min-height: 130px;
+
+            resize: vertical;
+        }
+
+
+        .required {
+
+            color: #d52d2d;
+        }
+
+
+        .submit-button {
+
+            width: 100%;
+
+            margin-top: 22px;
+
+            padding: 16px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background: var(--green);
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .submit-button:hover {
+
+            background:
+                var(--green-light);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .form-note {
+
+            text-align: center;
+
+            color: var(--gray);
+
+            font-size: 12px;
+
+            margin-top: 12px;
+        }
+
+
+        /* =================================================
+           SERVICE AREA
+        ================================================= */
+
+        .area-box {
+
+            background: white;
+
+            border:
+                1px solid var(--border);
 
             border-radius: 25px;
 
             padding: 35px;
 
-            border: 1px solid var(--border);
+            text-align: center;
 
             box-shadow: var(--shadow);
-
-            text-align: center;
         }
 
 
-        .areas-box h3 {
+        .area-box h3 {
 
-            color: var(--primary);
+            color: var(--green);
 
             font-size: 28px;
 
@@ -907,9 +1091,9 @@
         }
 
 
-        .areas-box p {
+        .area-box p {
 
-            color: var(--text-light);
+            color: var(--gray);
 
             margin-bottom: 25px;
         }
@@ -929,11 +1113,13 @@
 
         .area-tag {
 
-            background: #eaf5f0;
+            background:
+                #eaf5f0;
 
-            color: var(--primary);
+            color: var(--green);
 
-            padding: 10px 16px;
+            padding:
+                10px 16px;
 
             border-radius: 50px;
 
@@ -943,9 +1129,9 @@
         }
 
 
-        /* =========================================
+        /* =================================================
            CONTACT CTA
-        ========================================== */
+        ================================================= */
 
         .contact-section {
 
@@ -958,7 +1144,7 @@
             background:
                 linear-gradient(
                     135deg,
-                    var(--primary),
+                    var(--green),
                     #0b674f
                 );
 
@@ -982,11 +1168,8 @@
 
         .contact-box h2 {
 
-            font-size: clamp(
-                30px,
-                4vw,
-                45px
-            );
+            font-size:
+                clamp(30px,4vw,45px);
 
             line-height: 1.1;
 
@@ -1002,23 +1185,24 @@
 
         .contact-box .button-primary {
 
-            background: var(--accent);
+            background: var(--gold);
 
-            color: var(--primary);
+            color: var(--green);
         }
 
 
-        /* =========================================
+        /* =================================================
            FOOTER
-        ========================================== */
+        ================================================= */
 
         .footer {
 
-            background: var(--primary-dark);
+            background: var(--green-dark);
 
             color: #c9ddd5;
 
-            padding: 60px 0 25px;
+            padding:
+                60px 0 25px;
         }
 
 
@@ -1073,7 +1257,7 @@
 
         .footer-links a:hover {
 
-            color: var(--accent);
+            color: var(--gold);
         }
 
 
@@ -1095,11 +1279,11 @@
         }
 
 
-        /* =========================================
+        /* =================================================
            FLOATING WHATSAPP
-        ========================================== */
+        ================================================= */
 
-        .whatsapp {
+        .whatsapp-button {
 
             position: fixed;
 
@@ -1133,15 +1317,15 @@
         }
 
 
-        .whatsapp:hover {
+        .whatsapp-button:hover {
 
             transform: scale(1.08);
         }
 
 
-        /* =========================================
-           MOBILE RESPONSIVE
-        ========================================== */
+        /* =================================================
+           MOBILE
+        ================================================= */
 
         @media (max-width: 900px) {
 
@@ -1167,8 +1351,6 @@
                 flex-direction: column;
 
                 align-items: stretch;
-
-                gap: 5px;
             }
 
 
@@ -1182,11 +1364,11 @@
 
                 display: block;
 
-                padding: 12px 0;
+                padding: 10px 0;
             }
 
 
-            .nav-button {
+            .nav-quote {
 
                 text-align: center;
             }
@@ -1201,28 +1383,26 @@
             .hero-grid {
 
                 grid-template-columns: 1fr;
-
             }
 
 
             .about-grid {
 
                 grid-template-columns: 1fr;
-
             }
 
 
             .services-grid {
 
                 grid-template-columns:
-                    repeat(2, 1fr);
+                    repeat(2,1fr);
             }
 
 
             .process-grid {
 
                 grid-template-columns:
-                    repeat(2, 1fr);
+                    repeat(2,1fr);
             }
 
 
@@ -1231,7 +1411,6 @@
                 grid-template-columns:
                     1fr 1fr;
             }
-
         }
 
 
@@ -1239,17 +1418,19 @@
 
             .hero {
 
-                padding: 60px 0;
+                padding:
+                    60px 0;
             }
 
 
-            .hero-title {
+            .hero h1 {
 
-                letter-spacing: -2px;
+                letter-spacing:
+                    -2px;
             }
 
 
-            .hero-description {
+            .hero-text {
 
                 font-size: 16px;
             }
@@ -1263,7 +1444,8 @@
 
             .section {
 
-                padding: 65px 0;
+                padding:
+                    65px 0;
             }
 
 
@@ -1279,15 +1461,36 @@
             }
 
 
+            .form-wrapper {
+
+                padding:
+                    25px 18px;
+            }
+
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .form-group.full {
+
+                grid-column: auto;
+            }
+
+
             .contact-box {
 
-                padding: 35px 25px;
+                padding:
+                    35px 25px;
 
                 display: block;
             }
 
 
-            .contact-box .button-group {
+            .contact-box
+            .button-group {
 
                 margin-top: 25px;
             }
@@ -1299,7 +1502,7 @@
             }
 
 
-            .logo {
+            .brand img {
 
                 width: 48px;
 
@@ -1307,17 +1510,16 @@
             }
 
 
-            .logo-text strong {
+            .brand-name strong {
 
                 font-size: 15px;
             }
 
 
-            .logo-text span {
+            .brand-name span {
 
                 font-size: 8px;
             }
-
         }
 
     </style>
@@ -1328,9 +1530,9 @@
 <body>
 
 
-    <!-- =========================================
+    <!-- =====================================================
          HEADER
-    ========================================== -->
+    ====================================================== -->
 
     <header class="header">
 
@@ -1340,15 +1542,15 @@
             <!-- LOGO -->
 
             <a href="#home"
-               class="logo-link">
+               class="brand">
 
                 <img
                     src="logo.png"
                     alt="Megacity Pest Control Services Logo"
-                    class="logo"
                 >
 
-                <div class="logo-text">
+
+                <div class="brand-name">
 
                     <strong>
                         MEGACITY
@@ -1363,12 +1565,12 @@
             </a>
 
 
-            <!-- MOBILE MENU BUTTON -->
+            <!-- MOBILE MENU -->
 
             <button
                 class="menu-button"
                 id="menuButton"
-                aria-label="Open navigation menu">
+                type="button">
 
                 ☰
 
@@ -1402,17 +1604,16 @@
                     </li>
 
                     <li>
-                        <a href="#process">
-                            How It Works
+                        <a href="#enquiry">
+                            Book Service
                         </a>
                     </li>
 
                     <li>
-                        <a
-                            href="#contact"
-                            class="nav-button">
+                        <a href="#contact"
+                           class="nav-quote">
 
-                            Get a Quote
+                            Contact Us
 
                         </a>
                     </li>
@@ -1426,630 +1627,121 @@
     </header>
 
 
-    <!-- =========================================
-         MAIN
-    ========================================== -->
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
 
-    <main>
+    <section
+        class="hero"
+        id="home">
 
-
-        <!-- =====================================
-             HERO
-        ====================================== -->
-
-        <section
-            class="hero"
-            id="home">
-
-            <div class="container hero-grid">
+        <div class="container hero-grid">
 
 
-                <!-- HERO CONTENT -->
+            <!-- HERO TEXT -->
 
-                <div>
+            <div>
 
-                    <span class="eyebrow">
+                <span class="eyebrow">
 
-                        Professional Pest Control
-                        in Hyderabad
+                    Professional Pest Control
+                    in Hyderabad
 
-                    </span>
-
-
-                    <h1 class="hero-title">
-
-                        A cleaner,
-                        safer place
-                        starts here.
-
-                    </h1>
+                </span>
 
 
-                    <p class="hero-description">
+                <h1>
 
-                        Megacity Pest Control Services provides
-                        professional pest control solutions for
-                        homes, offices, shops and commercial
-                        properties.
+                    A cleaner,
+                    safer place
+                    starts here.
 
-                    </p>
-
-
-                    <div class="button-group">
+                </h1>
 
 
-                        <!-- CALL BUTTON -->
+                <p class="hero-text">
 
-                        <a
-                            href="tel:YOUR_PHONE_NUMBER"
-                            class="button button-primary">
+                    Megacity Pest Control Services provides
+                    professional pest control solutions for
+                    homes, offices, shops and commercial
+                    properties.
 
-                            ☎ Call Now
-
-                        </a>
-
-
-                        <!-- WHATSAPP BUTTON -->
-
-                        <a
-                            href="https://wa.me/YOUR_WHATSAPP_NUMBER"
-                            target="_blank"
-                            class="button button-secondary">
-
-                            💬 WhatsApp
-
-                        </a>
-
-                    </div>
-
-                </div>
+                </p>
 
 
-                <!-- HERO LOGO CARD -->
-
-                <div class="hero-card">
-
-                    <img
-                        src="logo.png"
-                        alt="Megacity Pest Control Services"
-                        class="hero-logo"
-                    >
+                <div class="button-group">
 
 
-                    <div class="hero-features">
+                    <a
+                        href="tel:+919999999999"
+                        class="button button-primary">
 
-                        <div class="hero-feature">
+                        ☎ Call Now
 
-                            <strong>
-                                Homes
-                            </strong>
-
-                            <span>
-                                Residential
-                            </span>
-
-                        </div>
+                    </a>
 
 
-                        <div class="hero-feature">
+                    <a
+                        href="https://wa.me/919999999999"
+                        target="_blank"
+                        class="button button-secondary">
 
-                            <strong>
-                                Offices
-                            </strong>
+                        💬 WhatsApp
 
-                            <span>
-                                Commercial
-                            </span>
-
-                        </div>
-
-
-                        <div class="hero-feature">
-
-                            <strong>
-                                Hyderabad
-                            </strong>
-
-                            <span>
-                                Local Service
-                            </span>
-
-                        </div>
-
-                    </div>
+                    </a>
 
                 </div>
 
             </div>
 
-        </section>
 
+            <!-- HERO CARD -->
 
-        <!-- =====================================
-             SERVICES
-        ====================================== -->
+            <div class="hero-card">
 
-        <section
-            class="section"
-            id="services">
+                <img
+                    src="logo.png"
+                    alt="Megacity Pest Control Services"
+                    class="hero-logo"
+                >
 
-            <div class="container">
 
+                <div class="hero-features">
 
-                <div class="section-heading">
+                    <div class="hero-feature">
 
-                    <span class="eyebrow">
+                        <strong>
+                            Homes
+                        </strong>
 
-                        Our Services
-
-                    </span>
-
-
-                    <h2>
-
-                        Complete pest control
-                        solutions
-
-                    </h2>
-
-
-                    <p>
-
-                        We provide pest control services
-                        for common residential and
-                        commercial pest problems.
-
-                    </p>
-
-                </div>
-
-
-                <div class="services-grid">
-
-
-                    <!-- SERVICE 1 -->
-
-                    <article class="service-card">
-
-                        <div class="service-icon">
-                            🪳
-                        </div>
-
-                        <h3>
-                            Cockroach Control
-                        </h3>
-
-                        <p>
-
-                            Treatment solutions for
-                            cockroach activity in kitchens,
-                            homes, offices and commercial
-                            spaces.
-
-                        </p>
-
-                    </article>
-
-
-                    <!-- SERVICE 2 -->
-
-                    <article class="service-card">
-
-                        <div class="service-icon">
-                            🐜
-                        </div>
-
-                        <h3>
-                            Ant Control
-                        </h3>
-
-                        <p>
-
-                            Solutions for ant trails and
-                            recurring ant activity around
-                            your property.
-
-                        </p>
-
-                    </article>
-
-
-                    <!-- SERVICE 3 -->
-
-                    <article class="service-card">
-
-                        <div class="service-icon">
-                            🦟
-                        </div>
-
-                        <h3>
-                            Mosquito Control
-                        </h3>
-
-                        <p>
-
-                            Help reduce mosquito activity
-                            around residential and
-                            commercial areas.
-
-                        </p>
-
-                    </article>
-
-
-                    <!-- SERVICE 4 -->
-
-                    <article class="service-card">
-
-                        <div class="service-icon">
-                            🐀
-                        </div>
-
-                        <h3>
-                            Rodent Control
-                        </h3>
-
-                        <p>
-
-                            Solutions for rats and mice,
-                            including attention to common
-                            activity areas.
-
-                        </p>
-
-                    </article>
-
-
-                    <!-- SERVICE 5 -->
-
-                    <article class="service-card">
-
-                        <div class="service-icon">
-                            🪲
-                        </div>
-
-                        <h3>
-                            Termite Control
-                        </h3>
-
-                        <p>
-
-                            Treatment options for properties
-                            where termite activity is
-                            suspected or confirmed.
-
-                        </p>
-
-                    </article>
-
-
-                    <!-- SERVICE 6 -->
-
-                    <article class="service-card">
-
-                        <div class="service-icon">
-                            🏢
-                        </div>
-
-                        <h3>
-                            Commercial Pest Control
-                        </h3>
-
-                        <p>
-
-                            Pest control solutions for
-                            offices, shops, restaurants
-                            and commercial properties.
-
-                        </p>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================
-             ABOUT
-        ====================================== -->
-
-        <section
-            class="section about"
-            id="about">
-
-            <div class="container about-grid">
-
-
-                <div>
-
-                    <span class="eyebrow">
-
-                        About Megacity
-
-                    </span>
-
-
-                    <h2>
-
-                        Professional service
-                        with a customer-first
-                        approach.
-
-                    </h2>
-
-
-                    <p class="about-text">
-
-                        At Megacity Pest Control Services,
-                        our goal is to understand your pest
-                        problem and provide a clear,
-                        professional service experience.
-
-                    </p>
-
-
-                    <ul class="check-list">
-
-                        <li>
-
-                            <span class="check">
-                                ✓
-                            </span>
-
-                            Residential pest control
-
-                        </li>
-
-
-                        <li>
-
-                            <span class="check">
-                                ✓
-                            </span>
-
-                            Commercial pest control
-
-                        </li>
-
-
-                        <li>
-
-                            <span class="check">
-                                ✓
-                            </span>
-
-                            Clear communication
-
-                        </li>
-
-
-                        <li>
-
-                            <span class="check">
-                                ✓
-                            </span>
-
-                            Service focused on your
-                            pest problem
-
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <div class="about-card">
-
-                    <h3>
-
-                        We can help with
-
-                    </h3>
-
-
-                    <ul class="about-list">
-
-                        <li>
-                            🏠 Homes & Apartments
-                        </li>
-
-                        <li>
-                            🏢 Offices & Shops
-                        </li>
-
-                        <li>
-                            🍽️ Restaurants
-                        </li>
-
-                        <li>
-                            🏭 Commercial Properties
-                        </li>
-
-                        <li>
-                            📍 Hyderabad & Surrounding Areas
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================
-             HOW IT WORKS
-        ====================================== -->
-
-        <section
-            class="section"
-            id="process">
-
-            <div class="container">
-
-
-                <div class="section-heading">
-
-                    <span class="eyebrow">
-
-                        Simple Process
-
-                    </span>
-
-
-                    <h2>
-
-                        How it works
-
-                    </h2>
-
-
-                    <p>
-
-                        Getting started is simple.
-                        Contact us and tell us about
-                        your pest problem.
-
-                    </p>
-
-                </div>
-
-
-                <div class="process-grid">
-
-
-                    <div class="process-card">
-
-                        <div class="process-number">
-                            1
-                        </div>
-
-                        <h3>
-                            Contact Us
-                        </h3>
-
-                        <p>
-
-                            Call or WhatsApp us and
-                            tell us about the pest
-                            problem at your property.
-
-                        </p>
+                        <span>
+                            Residential
+                        </span>
 
                     </div>
 
 
-                    <div class="process-card">
+                    <div class="hero-feature">
 
-                        <div class="process-number">
-                            2
-                        </div>
+                        <strong>
+                            Offices
+                        </strong>
 
-                        <h3>
-                            Discuss the Problem
-                        </h3>
-
-                        <p>
-
-                            Share useful details such
-                            as the type of pest and
-                            location.
-
-                        </p>
+                        <span>
+                            Commercial
+                        </span>
 
                     </div>
 
 
-                    <div class="process-card">
+                    <div class="hero-feature">
 
-                        <div class="process-number">
-                            3
-                        </div>
-
-                        <h3>
-                            Schedule Service
-                        </h3>
-
-                        <p>
-
-                            Choose a suitable time
-                            and arrange your pest
-                            control service.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================
-             SERVICE AREAS
-        ====================================== -->
-
-        <section
-            class="section areas">
-
-            <div class="container">
-
-                <div class="areas-box">
-
-                    <span class="eyebrow">
-
-                        Service Area
-
-                    </span>
-
-
-                    <h3>
-
-                        Pest Control Services
-                        in Hyderabad
-
-                    </h3>
-
-
-                    <p>
-
-                        Contact us to check service
-                        availability in your area.
-
-                    </p>
-
-
-                    <div class="area-tags">
-
-                        <span class="area-tag">
+                        <strong>
                             Hyderabad
-                        </span>
+                        </strong>
 
-                        <span class="area-tag">
-                            Amberpet
-                        </span>
-
-                        <span class="area-tag">
-                            Dilsukhnagar
-                        </span>
-
-                        <span class="area-tag">
-                            Uppal
-                        </span>
-
-                        <span class="area-tag">
-                            LB Nagar
-                        </span>
-
-                        <span class="area-tag">
-                            Secunderabad
+                        <span>
+                            Local Service
                         </span>
 
                     </div>
@@ -2058,90 +1750,882 @@
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- =====================================
-             CONTACT
-        ====================================== -->
+    <!-- =====================================================
+         SERVICES
+    ====================================================== -->
 
-        <section
-            class="section contact-section"
-            id="contact">
+    <section
+        class="section"
+        id="services">
 
-            <div class="container">
-
-                <div class="contact-box">
+        <div class="container">
 
 
-                    <div>
+            <div class="section-heading">
 
-                        <h2>
-
-                            Have a pest problem?
-
-                        </h2>
+                <span class="eyebrow">
+                    Our Services
+                </span>
 
 
-                        <p>
+                <h2>
+                    Complete pest control solutions
+                </h2>
 
-                            Contact Megacity Pest Control
-                            Services today to discuss your
-                            requirement.
 
-                        </p>
+                <p>
 
+                    Professional solutions for common
+                    residential and commercial pest problems.
+
+                </p>
+
+            </div>
+
+
+            <div class="services-grid">
+
+
+                <article class="service-card">
+
+                    <div class="service-icon">
+                        🪳
                     </div>
 
+                    <h3>
+                        Cockroach Control
+                    </h3>
 
-                    <div class="button-group">
+                    <p>
+
+                        Treatment solutions for cockroach
+                        activity in homes, kitchens,
+                        offices and commercial spaces.
+
+                    </p>
+
+                </article>
 
 
-                        <a
-                            href="tel:YOUR_PHONE_NUMBER"
-                            class="button button-primary">
+                <article class="service-card">
 
-                            ☎ Call Megacity
-
-                        </a>
-
-
-                        <a
-                            href="https://wa.me/YOUR_WHATSAPP_NUMBER"
-                            target="_blank"
-                            class="button button-secondary">
-
-                            💬 WhatsApp Us
-
-                        </a>
-
+                    <div class="service-icon">
+                        🐜
                     </div>
+
+                    <h3>
+                        Ant Control
+                    </h3>
+
+                    <p>
+
+                        Solutions for ant trails and
+                        recurring ant activity.
+
+                    </p>
+
+                </article>
+
+
+                <article class="service-card">
+
+                    <div class="service-icon">
+                        🦟
+                    </div>
+
+                    <h3>
+                        Mosquito Control
+                    </h3>
+
+                    <p>
+
+                        Help reduce mosquito activity
+                        around your property.
+
+                    </p>
+
+                </article>
+
+
+                <article class="service-card">
+
+                    <div class="service-icon">
+                        🐀
+                    </div>
+
+                    <h3>
+                        Rodent Control
+                    </h3>
+
+                    <p>
+
+                        Solutions for rats and mice
+                        around homes and businesses.
+
+                    </p>
+
+                </article>
+
+
+                <article class="service-card">
+
+                    <div class="service-icon">
+                        🪲
+                    </div>
+
+                    <h3>
+                        Termite Control
+                    </h3>
+
+                    <p>
+
+                        Treatment options for suspected
+                        or confirmed termite activity.
+
+                    </p>
+
+                </article>
+
+
+                <article class="service-card">
+
+                    <div class="service-icon">
+                        🏢
+                    </div>
+
+                    <h3>
+                        Commercial Pest Control
+                    </h3>
+
+                    <p>
+
+                        Pest control services for offices,
+                        shops, restaurants and businesses.
+
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+
+    <section
+        class="section about"
+        id="about">
+
+        <div class="container about-grid">
+
+
+            <div>
+
+                <span class="eyebrow">
+                    About Megacity
+                </span>
+
+
+                <h2>
+
+                    Professional service
+                    with a customer-first
+                    approach.
+
+                </h2>
+
+
+                <p class="about-text">
+
+                    We focus on understanding your pest
+                    problem, explaining the service clearly
+                    and arranging a suitable treatment.
+
+                </p>
+
+
+                <ul class="check-list">
+
+                    <li>
+                        <span class="check">✓</span>
+                        Residential pest control
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Commercial pest control
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Clear communication
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Customer-focused service
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <h3>
+                    We can help with
+                </h3>
+
+
+                <ul class="about-list">
+
+                    <li>
+                        🏠 Homes & Apartments
+                    </li>
+
+                    <li>
+                        🏢 Offices & Shops
+                    </li>
+
+                    <li>
+                        🍽️ Restaurants
+                    </li>
+
+                    <li>
+                        🏭 Commercial Properties
+                    </li>
+
+                    <li>
+                        📍 Hyderabad & Surrounding Areas
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         HOW IT WORKS
+    ====================================================== -->
+
+    <section
+        class="section"
+        id="process">
+
+        <div class="container">
+
+
+            <div class="section-heading">
+
+                <span class="eyebrow">
+                    Simple Process
+                </span>
+
+
+                <h2>
+                    How it works
+                </h2>
+
+
+                <p>
+
+                    Getting started is simple.
+                    Tell us about your pest problem.
+
+                </p>
+
+            </div>
+
+
+            <div class="process-grid">
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        1
+                    </div>
+
+                    <h3>
+                        Contact Us
+                    </h3>
+
+                    <p>
+
+                        Call or WhatsApp us and tell
+                        us about your pest problem.
+
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        2
+                    </div>
+
+                    <h3>
+                        Share Details
+                    </h3>
+
+                    <p>
+
+                        Give us your location, pest
+                        type and service requirement.
+
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        3
+                    </div>
+
+                    <h3>
+                        Schedule Service
+                    </h3>
+
+                    <p>
+
+                        Choose a suitable date and
+                        time for your service.
+
+                    </p>
 
                 </div>
 
             </div>
 
-        </section>
+        </div>
 
-    </main>
+    </section>
 
 
-    <!-- =========================================
+    <!-- =====================================================
+         CUSTOMER ENQUIRY FORM
+    ====================================================== -->
+
+    <section
+        class="section enquiry-section"
+        id="enquiry">
+
+        <div class="container">
+
+
+            <div class="form-wrapper">
+
+
+                <div class="form-title">
+
+                    <span class="eyebrow">
+                        Book a Service
+                    </span>
+
+
+                    <h2>
+                        Send Us Your Details
+                    </h2>
+
+
+                    <p>
+
+                        Fill in the form below.
+                        Your enquiry will be prepared
+                        and sent to our WhatsApp.
+
+                    </p>
+
+                </div>
+
+
+                <!-- FORM -->
+
+                <form id="enquiryForm">
+
+
+                    <div class="form-grid">
+
+
+                        <!-- NAME -->
+
+                        <div class="form-group">
+
+                            <label for="name">
+
+                                Full Name
+                                <span class="required">*</span>
+
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your name"
+                                required>
+
+                        </div>
+
+
+                        <!-- MOBILE -->
+
+                        <div class="form-group">
+
+                            <label for="mobile">
+
+                                Mobile Number
+                                <span class="required">*</span>
+
+                            </label>
+
+
+                            <input
+                                type="tel"
+                                id="mobile"
+                                name="mobile"
+                                placeholder="Enter mobile number"
+                                pattern="[0-9]{10}"
+                                maxlength="10"
+                                required>
+
+                        </div>
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group">
+
+                            <label for="email">
+
+                                Email Address
+
+                            </label>
+
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter email address">
+
+                        </div>
+
+
+                        <!-- AREA -->
+
+                        <div class="form-group">
+
+                            <label for="area">
+
+                                Area / Locality
+                                <span class="required">*</span>
+
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="area"
+                                name="area"
+                                placeholder="Example: Amberpet"
+                                required>
+
+                        </div>
+
+
+                        <!-- ADDRESS -->
+
+                        <div class="form-group full">
+
+                            <label for="address">
+
+                                Full Address
+                                <span class="required">*</span>
+
+                            </label>
+
+
+                            <textarea
+                                id="address"
+                                name="address"
+                                placeholder="Enter your complete address"
+                                required></textarea>
+
+                        </div>
+
+
+                        <!-- PEST TYPE -->
+
+                        <div class="form-group">
+
+                            <label for="pest">
+
+                                Pest Type
+                                <span class="required">*</span>
+
+                            </label>
+
+
+                            <select
+                                id="pest"
+                                name="pest"
+                                required>
+
+                                <option value="">
+                                    Select Pest
+                                </option>
+
+                                <option value="Cockroach">
+                                    Cockroach
+                                </option>
+
+                                <option value="Ant">
+                                    Ant
+                                </option>
+
+                                <option value="Mosquito">
+                                    Mosquito
+                                </option>
+
+                                <option value="Rat / Rodent">
+                                    Rat / Rodent
+                                </option>
+
+                                <option value="Termite">
+                                    Termite
+                                </option>
+
+                                <option value="Bed Bug">
+                                    Bed Bug
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- PROPERTY -->
+
+                        <div class="form-group">
+
+                            <label for="property">
+
+                                Property Type
+                                <span class="required">*</span>
+
+                            </label>
+
+
+                            <select
+                                id="property"
+                                name="property"
+                                required>
+
+                                <option value="">
+                                    Select Property
+                                </option>
+
+                                <option value="House">
+                                    House
+                                </option>
+
+                                <option value="Apartment">
+                                    Apartment
+                                </option>
+
+                                <option value="Office">
+                                    Office
+                                </option>
+
+                                <option value="Shop">
+                                    Shop
+                                </option>
+
+                                <option value="Restaurant">
+                                    Restaurant
+                                </option>
+
+                                <option value="Commercial Property">
+                                    Commercial Property
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- DATE -->
+
+                        <div class="form-group">
+
+                            <label for="date">
+
+                                Preferred Service Date
+
+                            </label>
+
+
+                            <input
+                                type="date"
+                                id="date"
+                                name="date">
+
+                        </div>
+
+
+                        <!-- TIME -->
+
+                        <div class="form-group">
+
+                            <label for="time">
+
+                                Preferred Time
+
+                            </label>
+
+
+                            <select
+                                id="time"
+                                name="time">
+
+                                <option value="">
+                                    Select Time
+                                </option>
+
+                                <option value="Morning">
+                                    Morning
+                                </option>
+
+                                <option value="Afternoon">
+                                    Afternoon
+                                </option>
+
+                                <option value="Evening">
+                                    Evening
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- MESSAGE -->
+
+                        <div class="form-group full">
+
+                            <label for="message">
+
+                                Tell Us About The Problem
+
+                            </label>
+
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                placeholder="Example: Cockroaches are seen mainly in the kitchen."></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="submit-button">
+
+                        💬 Send Enquiry on WhatsApp
+
+                    </button>
+
+
+                    <p class="form-note">
+
+                        Your details will be opened
+                        in WhatsApp before sending.
+
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SERVICE AREAS
+    ====================================================== -->
+
+    <section
+        class="section">
+
+        <div class="container">
+
+
+            <div class="area-box">
+
+                <span class="eyebrow">
+                    Service Area
+                </span>
+
+
+                <h3>
+                    Pest Control Services in Hyderabad
+                </h3>
+
+
+                <p>
+
+                    Contact us to check service
+                    availability in your area.
+
+                </p>
+
+
+                <div class="area-tags">
+
+                    <span class="area-tag">
+                        Hyderabad
+                    </span>
+
+                    <span class="area-tag">
+                        Amberpet
+                    </span>
+
+                    <span class="area-tag">
+                        Dilsukhnagar
+                    </span>
+
+                    <span class="area-tag">
+                        Uppal
+                    </span>
+
+                    <span class="area-tag">
+                        LB Nagar
+                    </span>
+
+                    <span class="area-tag">
+                        Secunderabad
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+    <section
+        class="section contact-section"
+        id="contact">
+
+        <div class="container">
+
+
+            <div class="contact-box">
+
+
+                <div>
+
+                    <h2>
+                        Have a pest problem?
+                    </h2>
+
+
+                    <p>
+
+                        Contact Megacity Pest Control
+                        Services today.
+
+                    </p>
+
+                </div>
+
+
+                <div class="button-group">
+
+
+                    <a
+                        href="tel:+919999999999"
+                        class="button button-primary">
+
+                        ☎ Call Megacity
+
+                    </a>
+
+
+                    <a
+                        href="https://wa.me/919999999999"
+                        target="_blank"
+                        class="button button-secondary">
+
+                        💬 WhatsApp Us
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
          FOOTER
-    ========================================== -->
+    ====================================================== -->
 
     <footer class="footer">
 
         <div class="container footer-grid">
 
 
-            <!-- COMPANY -->
-
             <div>
 
                 <img
                     src="logo.png"
-                    alt="Megacity Pest Control Services Logo"
+                    alt="Megacity Pest Control Services"
                     class="footer-logo"
                 >
 
@@ -2161,8 +2645,6 @@
 
             </div>
 
-
-            <!-- QUICK LINKS -->
 
             <div>
 
@@ -2187,13 +2669,13 @@
 
                     <li>
                         <a href="#about">
-                            About Us
+                            About
                         </a>
                     </li>
 
                     <li>
-                        <a href="#process">
-                            How It Works
+                        <a href="#enquiry">
+                            Book Service
                         </a>
                     </li>
 
@@ -2208,12 +2690,10 @@
             </div>
 
 
-            <!-- CONTACT -->
-
             <div>
 
                 <h3>
-                    Contact Us
+                    Contact
                 </h3>
 
 
@@ -2224,7 +2704,7 @@
                     </li>
 
                     <li>
-                        ☎ YOUR PHONE NUMBER
+                        ☎ +91 XXXXXXXXXX
                     </li>
 
                     <li>
@@ -2248,30 +2728,49 @@
     </footer>
 
 
-    <!-- =========================================
+    <!-- =====================================================
          FLOATING WHATSAPP
-    ========================================== -->
+    ====================================================== -->
 
     <a
-        href="https://wa.me/YOUR_WHATSAPP_NUMBER"
+        href="https://wa.me/919999999999"
         target="_blank"
-        class="whatsapp"
-        aria-label="Contact Megacity Pest Control Services on WhatsApp">
+        class="whatsapp-button"
+        aria-label="WhatsApp">
 
         💬
 
     </a>
 
 
-    <!-- =========================================
+    <!-- =====================================================
          JAVASCRIPT
-    ========================================== -->
+    ====================================================== -->
 
     <script>
 
-        /* ================================
+        /* =================================================
+           BUSINESS WHATSAPP NUMBER
+
+           CHANGE ONLY THIS NUMBER.
+
+           Example:
+           919876543210
+
+           Do NOT use:
+           +91
+           spaces
+           brackets
+           hyphens
+        ================================================== */
+
+        const BUSINESS_WHATSAPP =
+            "919999999999";
+
+
+        /* =================================================
            MOBILE MENU
-        ================================= */
+        ================================================== */
 
         const menuButton =
             document.getElementById("menuButton");
@@ -2292,22 +2791,17 @@
         );
 
 
-        /* ================================
-           CLOSE MENU AFTER CLICK
-        ================================= */
+        /* =================================================
+           CLOSE MOBILE MENU
+        ================================================== */
 
-        const navLinks =
-            document.querySelectorAll(
-                "#navMenu a"
-            );
-
-
-        navLinks.forEach(
-            function (link) {
+        document
+            .querySelectorAll("#navMenu a")
+            .forEach(function(link) {
 
                 link.addEventListener(
                     "click",
-                    function () {
+                    function() {
 
                         navMenu.classList.remove(
                             "active"
@@ -2316,28 +2810,224 @@
                     }
                 );
 
-            }
-        );
+            });
 
 
-        /* ================================
-           CLOSE MENU WHEN CLICKING OUTSIDE
-        ================================= */
+        /* =================================================
+           CUSTOMER ENQUIRY FORM
+        ================================================== */
 
-        document.addEventListener(
-            "click",
-            function (event) {
+        const enquiryForm =
+            document.getElementById(
+                "enquiryForm"
+            );
+
+
+        enquiryForm.addEventListener(
+            "submit",
+            function(event) {
+
+                /*
+                    Stop normal form submission.
+                */
+
+                event.preventDefault();
+
+
+                /* ==============================
+                   GET CUSTOMER DETAILS
+                =============================== */
+
+                const name =
+                    document
+                    .getElementById("name")
+                    .value
+                    .trim();
+
+
+                const mobile =
+                    document
+                    .getElementById("mobile")
+                    .value
+                    .trim();
+
+
+                const email =
+                    document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+
+                const area =
+                    document
+                    .getElementById("area")
+                    .value
+                    .trim();
+
+
+                const address =
+                    document
+                    .getElementById("address")
+                    .value
+                    .trim();
+
+
+                const pest =
+                    document
+                    .getElementById("pest")
+                    .value;
+
+
+                const property =
+                    document
+                    .getElementById("property")
+                    .value;
+
+
+                const date =
+                    document
+                    .getElementById("date")
+                    .value;
+
+
+                const time =
+                    document
+                    .getElementById("time")
+                    .value;
+
+
+                const message =
+                    document
+                    .getElementById("message")
+                    .value
+                    .trim();
+
+
+                /* ==============================
+                   VALIDATION
+                =============================== */
 
                 if (
-                    !navMenu.contains(event.target) &&
-                    !menuButton.contains(event.target)
+                    name === "" ||
+                    mobile === "" ||
+                    area === "" ||
+                    address === "" ||
+                    pest === "" ||
+                    property === ""
                 ) {
 
-                    navMenu.classList.remove(
-                        "active"
+                    alert(
+                        "Please fill all required fields."
                     );
 
+                    return;
                 }
+
+
+                /*
+                    Check mobile number.
+                */
+
+                if (
+                    !/^[0-9]{10}$/.test(mobile)
+                ) {
+
+                    alert(
+                        "Please enter a valid 10-digit mobile number."
+                    );
+
+                    return;
+                }
+
+
+                /* ==============================
+                   CREATE WHATSAPP MESSAGE
+                =============================== */
+
+                let whatsappMessage =
+
+`*NEW PEST CONTROL ENQUIRY*
+
+━━━━━━━━━━━━━━━━━━
+
+*CUSTOMER DETAILS*
+
+Name:
+${name}
+
+Mobile:
+${mobile}
+
+Email:
+${email || "Not provided"}
+
+━━━━━━━━━━━━━━━━━━
+
+*LOCATION*
+
+Area / Locality:
+${area}
+
+Full Address:
+${address}
+
+━━━━━━━━━━━━━━━━━━
+
+*SERVICE DETAILS*
+
+Pest Type:
+${pest}
+
+Property Type:
+${property}
+
+Preferred Date:
+${date || "Not specified"}
+
+Preferred Time:
+${time || "Not specified"}
+
+━━━━━━━━━━━━━━━━━━
+
+*PROBLEM DESCRIPTION*
+
+${message || "Not provided"}
+
+━━━━━━━━━━━━━━━━━━
+
+Please contact the customer regarding this enquiry.`;
+
+
+                /* ==============================
+                   ENCODE MESSAGE
+                =============================== */
+
+                const encodedMessage =
+                    encodeURIComponent(
+                        whatsappMessage
+                    );
+
+
+                /* ==============================
+                   CREATE WHATSAPP URL
+                =============================== */
+
+                const whatsappURL =
+                    "https://wa.me/" +
+                    BUSINESS_WHATSAPP +
+                    "?text=" +
+                    encodedMessage;
+
+
+                /* ==============================
+                   OPEN WHATSAPP
+                =============================== */
+
+                window.open(
+                    whatsappURL,
+                    "_blank"
+                );
 
             }
         );
@@ -2346,4 +3036,5 @@
 
 
 </body>
+
 </html>

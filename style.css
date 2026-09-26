@@ -60,8 +60,8 @@ body {
 }
 
 .company-logo {
-    width: 120px;
-    height: 120px;
+    width: 50px;
+    height: 60px;
     object-fit: contain;
     display: block;
     margin: 0 auto 15px;

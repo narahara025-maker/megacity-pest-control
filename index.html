@@ -1,731 +1,2349 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+
+    <!-- =========================
+         BASIC SETTINGS
+    ========================== -->
+
     <meta charset="UTF-8">
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="Megacity Pest Control Services - Professional pest control services in Hyderabad.">
+          content="Megacity Pest Control Services provides professional pest control solutions for homes, offices, shops and commercial properties in Hyderabad.">
 
     <meta name="keywords"
-          content="pest control Hyderabad, cockroach control, termite control, mosquito control, rat control">
+          content="pest control Hyderabad, pest control services, cockroach control, termite control, mosquito control, rat control, Megacity Pest Control">
 
-    <title>Megacity Pest Control Services | Hyderabad</title>
+    <meta name="author"
+          content="Megacity Pest Control Services">
 
-    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color"
+          content="#063b2e">
+
+    <title>
+        Megacity Pest Control Services | Hyderabad
+    </title>
+
+
+    <!-- =========================
+         FONTS
+    ========================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+
+    <!-- =========================
+         WEBSITE CSS
+    ========================== -->
+
+    <style>
+
+        /* =========================================
+           GLOBAL VARIABLES
+        ========================================== */
+
+        :root {
+
+            --primary: #063b2e;
+
+            --primary-light: #0b5a45;
+
+            --primary-dark: #04291f;
+
+            --accent: #f2b84b;
+
+            --background: #ffffff;
+
+            --background-light: #f5faf7;
+
+            --cream: #fffaf0;
+
+            --text: #17211d;
+
+            --text-light: #66736d;
+
+            --border: #e4ebe7;
+
+            --white: #ffffff;
+
+            --shadow:
+                0 15px 45px rgba(6, 59, 46, 0.10);
+
+            --radius: 20px;
+
+            --max-width: 1200px;
+        }
+
+
+        /* =========================================
+           RESET
+        ========================================== */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family: "Inter", Arial, sans-serif;
+
+            background: var(--background);
+
+            color: var(--text);
+
+            line-height: 1.6;
+        }
+
+
+        img {
+
+            max-width: 100%;
+
+            display: block;
+        }
+
+
+        a {
+
+            text-decoration: none;
+
+            color: inherit;
+        }
+
+
+        button {
+
+            font-family: inherit;
+        }
+
+
+        .container {
+
+            width: 92%;
+
+            max-width: var(--max-width);
+
+            margin: auto;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================== */
+
+        .header {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+
+        .navbar {
+
+            min-height: 80px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        /* LOGO */
+
+        .logo-link {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .logo {
+
+            width: 55px;
+
+            height: 55px;
+
+            object-fit: contain;
+        }
+
+
+        .logo-text {
+
+            line-height: 1.1;
+        }
+
+
+        .logo-text strong {
+
+            display: block;
+
+            color: var(--primary);
+
+            font-size: 18px;
+
+            font-weight: 900;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .logo-text span {
+
+            display: block;
+
+            color: var(--primary-light);
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            margin-top: 5px;
+        }
+
+
+        /* NAVIGATION */
+
+        .nav-menu {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 28px;
+
+            list-style: none;
+        }
+
+
+        .nav-menu a {
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            color: #37443f;
+
+            transition: 0.2s ease;
+        }
+
+
+        .nav-menu a:hover {
+
+            color: var(--primary-light);
+        }
+
+
+        .nav-button {
+
+            background: var(--primary);
+
+            color: var(--white) !important;
+
+            padding: 12px 19px;
+
+            border-radius: 50px;
+        }
+
+
+        .nav-button:hover {
+
+            background: var(--primary-light);
+        }
+
+
+        /* MOBILE MENU BUTTON */
+
+        .menu-button {
+
+            display: none;
+
+            border: none;
+
+            background: var(--primary);
+
+            color: white;
+
+            width: 44px;
+
+            height: 44px;
+
+            border-radius: 12px;
+
+            font-size: 22px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================
+           HERO SECTION
+        ========================================== */
+
+        .hero {
+
+            background:
+
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(242, 184, 75, 0.28),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #f7fbf8,
+                    #fffaf0
+                );
+
+            padding: 90px 0 80px;
+        }
+
+
+        .hero-grid {
+
+            display: grid;
+
+            grid-template-columns: 1.1fr 0.9fr;
+
+            align-items: center;
+
+            gap: 70px;
+        }
+
+
+        .eyebrow {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            color: var(--primary-light);
+
+            font-size: 13px;
+
+            font-weight: 900;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 18px;
+        }
+
+
+        .eyebrow::before {
+
+            content: "";
+
+            width: 30px;
+
+            height: 3px;
+
+            background: var(--accent);
+
+            border-radius: 10px;
+        }
+
+
+        .hero-title {
+
+            color: var(--primary);
+
+            font-size: clamp(
+                42px,
+                6vw,
+                72px
+            );
+
+            line-height: 1.02;
+
+            letter-spacing: -3px;
+
+            margin-bottom: 22px;
+        }
+
+
+        .hero-description {
+
+            max-width: 650px;
+
+            color: var(--text-light);
+
+            font-size: 18px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* HERO BUTTONS */
+
+        .button-group {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+
+        .button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 9px;
+
+            padding: 14px 22px;
+
+            border-radius: 50px;
+
+            font-weight: 800;
+
+            border: 2px solid transparent;
+
+            transition: 0.2s ease;
+        }
+
+
+        .button-primary {
+
+            background: var(--primary);
+
+            color: white;
+        }
+
+
+        .button-primary:hover {
+
+            background: var(--primary-light);
+
+            transform: translateY(-2px);
+        }
+
+
+        .button-secondary {
+
+            background: white;
+
+            color: var(--primary);
+
+            border-color: var(--border);
+        }
+
+
+        .button-secondary:hover {
+
+            border-color: var(--primary-light);
+
+            transform: translateY(-2px);
+        }
+
+
+        /* HERO CARD */
+
+        .hero-card {
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 30px;
+
+            padding: 30px;
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .hero-logo {
+
+            width: 320px;
+
+            max-width: 100%;
+
+            margin: 0 auto 25px;
+        }
+
+
+        .hero-features {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 10px;
+        }
+
+
+        .hero-feature {
+
+            background: var(--background-light);
+
+            padding: 15px 8px;
+
+            text-align: center;
+
+            border-radius: 14px;
+        }
+
+
+        .hero-feature strong {
+
+            display: block;
+
+            color: var(--primary);
+
+            font-size: 16px;
+        }
+
+
+        .hero-feature span {
+
+            color: var(--text-light);
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================
+           GENERAL SECTION
+        ========================================== */
+
+        .section {
+
+            padding: 90px 0;
+        }
+
+
+        .section-heading {
+
+            max-width: 700px;
+
+            text-align: center;
+
+            margin: 0 auto 50px;
+        }
+
+
+        .section-heading h2 {
+
+            color: var(--primary);
+
+            font-size: clamp(
+                32px,
+                4vw,
+                48px
+            );
+
+            line-height: 1.1;
+
+            letter-spacing: -1px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .section-heading p {
+
+            color: var(--text-light);
+        }
+
+
+        /* =========================================
+           SERVICES
+        ========================================== */
+
+        .services-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .service-card {
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            padding: 30px;
+
+            transition: 0.25s ease;
+
+            box-shadow:
+                0 8px 30px
+                rgba(6, 59, 46, 0.04);
+        }
+
+
+        .service-card:hover {
+
+            transform: translateY(-7px);
+
+            box-shadow: var(--shadow);
+
+            border-color: #cbded5;
+        }
+
+
+        .service-icon {
+
+            width: 55px;
+
+            height: 55px;
+
+            display: grid;
+
+            place-items: center;
+
+            background: #eaf5f0;
+
+            border-radius: 16px;
+
+            font-size: 26px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .service-card h3 {
+
+            color: var(--primary);
+
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .service-card p {
+
+            color: var(--text-light);
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           ABOUT SECTION
+        ========================================== */
+
+        .about {
+
+            background: var(--primary);
+
+            color: white;
+        }
+
+
+        .about-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+
+        .about .eyebrow {
+
+            color: var(--accent);
+        }
+
+
+        .about h2 {
+
+            font-size: clamp(
+                34px,
+                4vw,
+                50px
+            );
+
+            line-height: 1.1;
+
+            margin-bottom: 20px;
+        }
+
+
+        .about-text {
+
+            color: #d4e6df;
+
+            margin-bottom: 25px;
+        }
+
+
+        .check-list {
+
+            list-style: none;
+
+            display: grid;
+
+            gap: 14px;
+        }
+
+
+        .check-list li {
+
+            display: flex;
+
+            gap: 10px;
+
+            align-items: flex-start;
+
+            color: #edf7f3;
+        }
+
+
+        .check {
+
+            color: var(--accent);
+
+            font-weight: 900;
+        }
+
+
+        .about-card {
+
+            background: white;
+
+            color: var(--text);
+
+            padding: 30px;
+
+            border-radius: 25px;
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .about-card h3 {
+
+            color: var(--primary);
+
+            margin-bottom: 18px;
+        }
+
+
+        .about-list {
+
+            list-style: none;
+
+            display: grid;
+
+            gap: 12px;
+        }
+
+
+        .about-list li {
+
+            background: #f5faf7;
+
+            padding: 14px;
+
+            border-radius: 12px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           PROCESS
+        ========================================== */
+
+        .process-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .process-card {
+
+            background: #f7faf8;
+
+            border: 1px solid var(--border);
+
+            border-radius: 22px;
+
+            padding: 30px;
+        }
+
+
+        .process-number {
+
+            width: 45px;
+
+            height: 45px;
+
+            display: grid;
+
+            place-items: center;
+
+            background: var(--accent);
+
+            color: var(--primary);
+
+            border-radius: 50%;
+
+            font-weight: 900;
+
+            margin-bottom: 18px;
+        }
+
+
+        .process-card h3 {
+
+            color: var(--primary);
+
+            margin-bottom: 8px;
+        }
+
+
+        .process-card p {
+
+            color: var(--text-light);
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           SERVICE AREA
+        ========================================== */
+
+        .areas {
+
+            background: var(--cream);
+        }
+
+
+        .areas-box {
+
+            background: white;
+
+            border-radius: 25px;
+
+            padding: 35px;
+
+            border: 1px solid var(--border);
+
+            box-shadow: var(--shadow);
+
+            text-align: center;
+        }
+
+
+        .areas-box h3 {
+
+            color: var(--primary);
+
+            font-size: 28px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .areas-box p {
+
+            color: var(--text-light);
+
+            margin-bottom: 25px;
+        }
+
+
+        .area-tags {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 10px;
+        }
+
+
+        .area-tag {
+
+            background: #eaf5f0;
+
+            color: var(--primary);
+
+            padding: 10px 16px;
+
+            border-radius: 50px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           CONTACT CTA
+        ========================================== */
+
+        .contact-section {
+
+            padding-top: 0;
+        }
+
+
+        .contact-box {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    #0b674f
+                );
+
+            color: white;
+
+            border-radius: 30px;
+
+            padding: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .contact-box h2 {
+
+            font-size: clamp(
+                30px,
+                4vw,
+                45px
+            );
+
+            line-height: 1.1;
+
+            margin-bottom: 10px;
+        }
+
+
+        .contact-box p {
+
+            color: #d7eae3;
+        }
+
+
+        .contact-box .button-primary {
+
+            background: var(--accent);
+
+            color: var(--primary);
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================== */
+
+        .footer {
+
+            background: var(--primary-dark);
+
+            color: #c9ddd5;
+
+            padding: 60px 0 25px;
+        }
+
+
+        .footer-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1.4fr 1fr 1fr;
+
+            gap: 45px;
+        }
+
+
+        .footer-logo {
+
+            width: 80px;
+
+            background: white;
+
+            padding: 5px;
+
+            border-radius: 12px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .footer h3 {
+
+            color: white;
+
+            margin-bottom: 14px;
+        }
+
+
+        .footer p {
+
+            font-size: 14px;
+        }
+
+
+        .footer-links {
+
+            list-style: none;
+
+            display: grid;
+
+            gap: 9px;
+        }
+
+
+        .footer-links a:hover {
+
+            color: var(--accent);
+        }
+
+
+        .copyright {
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.1);
+
+            margin-top: 40px;
+
+            padding-top: 20px;
+
+            text-align: center;
+
+            font-size: 12px;
+
+            color: #91aea4;
+        }
+
+
+        /* =========================================
+           FLOATING WHATSAPP
+        ========================================== */
+
+        .whatsapp {
+
+            position: fixed;
+
+            right: 20px;
+
+            bottom: 20px;
+
+            width: 60px;
+
+            height: 60px;
+
+            display: grid;
+
+            place-items: center;
+
+            background: #25D366;
+
+            color: white;
+
+            border-radius: 50%;
+
+            font-size: 27px;
+
+            z-index: 999;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,0.2);
+
+            transition: 0.2s;
+        }
+
+
+        .whatsapp:hover {
+
+            transform: scale(1.08);
+        }
+
+
+        /* =========================================
+           MOBILE RESPONSIVE
+        ========================================== */
+
+        @media (max-width: 900px) {
+
+            .nav-menu {
+
+                display: none;
+
+                position: absolute;
+
+                top: 80px;
+
+                left: 0;
+
+                right: 0;
+
+                background: white;
+
+                border-bottom:
+                    1px solid var(--border);
+
+                padding: 20px 5%;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 5px;
+            }
+
+
+            .nav-menu.active {
+
+                display: flex;
+            }
+
+
+            .nav-menu a {
+
+                display: block;
+
+                padding: 12px 0;
+            }
+
+
+            .nav-button {
+
+                text-align: center;
+            }
+
+
+            .menu-button {
+
+                display: block;
+            }
+
+
+            .hero-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .about-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .services-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .process-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .footer-grid {
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .hero {
+
+                padding: 60px 0;
+            }
+
+
+            .hero-title {
+
+                letter-spacing: -2px;
+            }
+
+
+            .hero-description {
+
+                font-size: 16px;
+            }
+
+
+            .hero-features {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .section {
+
+                padding: 65px 0;
+            }
+
+
+            .services-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .process-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .contact-box {
+
+                padding: 35px 25px;
+
+                display: block;
+            }
+
+
+            .contact-box .button-group {
+
+                margin-top: 25px;
+            }
+
+
+            .footer-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .logo {
+
+                width: 48px;
+
+                height: 48px;
+            }
+
+
+            .logo-text strong {
+
+                font-size: 15px;
+            }
+
+
+            .logo-text span {
+
+                font-size: 8px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
 
-<!-- =========================================
-     HEADER
-========================================= -->
+    <!-- =========================================
+         HEADER
+    ========================================== -->
 
-<header class="header">
+    <header class="header">
 
-    <a href="#home" class="logo-link">
-
-     <img src="logo.png" alt="Megacity Pest Control" class="company-logo">
-    </a>
+        <div class="container navbar">
 
 
-    <nav class="navbar">
+            <!-- LOGO -->
 
-        <a href="#home">Home</a>
+            <a href="#home"
+               class="logo-link">
 
-        <a href="#services">Services</a>
+                <img
+                    src="logo.png"
+                    alt="Megacity Pest Control Services Logo"
+                    class="logo"
+                >
 
-        <a href="#about">About</a>
+                <div class="logo-text">
 
-        <a href="#areas">Areas</a>
+                    <strong>
+                        MEGACITY
+                    </strong>
 
-        <a href="#contact">Contact</a>
+                    <span>
+                        Pest Control Services
+                    </span>
 
-    </nav>
-
-</header>
-
-
-
-<!-- =========================================
-     HERO
-========================================= -->
-
-<section id="home" class="hero">
-
-    <div class="hero-content">
-
-        <img
-            src="logo.png"
-            alt="Megacity Pest Control Services Logo"
-            class="hero-logo">
-
-
-        <p class="small-title">
-            PROFESSIONAL PEST CONTROL SERVICES
-        </p>
-
-
-        <h1>
-            Protect Your Home & Business From Pests
-        </h1>
-
-
-        <p class="hero-text">
-
-            Professional pest control solutions for
-            homes, offices, shops and commercial
-            properties in Hyderabad.
-
-        </p>
-
-
-        <div class="hero-buttons">
-
-            <a
-                href="tel:+919966220530"
-                class="btn call-btn">
-
-                📞 Call Now
+                </div>
 
             </a>
 
 
-            <a
-                href="https://wa.me/919966220530"
-                target="_blank"
-                class="btn whatsapp-btn">
-
-                💬 WhatsApp
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================
-     SERVICES
-========================================= -->
-
-<section id="services" class="section">
-
-    <div class="container">
-
-        <p class="section-small-title">
-            OUR SERVICES
-        </p>
-
-
-        <h2 class="section-title">
-            Professional Pest Control Services
-        </h2>
-
-
-        <p class="section-description">
-
-            Reliable pest control solutions for
-            residential and commercial properties.
-
-        </p>
-
-
-        <div class="services-grid">
-
-
-            <!-- COCKROACH -->
-
-            <div class="service-card">
-
-                <div class="service-icon">
-                    🪳
-                </div>
-
-                <h3>
-                    Cockroach Control
-                </h3>
-
-                <p>
-                    Professional treatment solutions
-                    for cockroach infestations.
-                </p>
-
-            </div>
-
-
-            <!-- TERMITE -->
-
-            <div class="service-card">
-
-                <div class="service-icon">
-                    🐜
-                </div>
-
-                <h3>
-                    Termite Control
-                </h3>
-
-                <p>
-                    Help protect your property from
-                    termite damage.
-                </p>
-
-            </div>
-
-
-            <!-- RODENT -->
-
-            <div class="service-card">
-
-                <div class="service-icon">
-                    🐀
-                </div>
-
-                <h3>
-                    Rat & Rodent Control
-                </h3>
-
-                <p>
-                    Solutions for controlling rats
-                    and mice around your property.
-                </p>
-
-            </div>
-
-
-            <!-- MOSQUITO -->
-
-            <div class="service-card">
-
-                <div class="service-icon">
-                    🦟
-                </div>
-
-                <h3>
-                    Mosquito Control
-                </h3>
-
-                <p>
-                    Mosquito control solutions for
-                    homes and outdoor areas.
-                </p>
-
-            </div>
-
-
-            <!-- ANT -->
-
-            <div class="service-card">
-
-                <div class="service-icon">
-                    🐜
-                </div>
-
-                <h3>
-                    Ant Control
-                </h3>
-
-                <p>
-                    Targeted solutions for common
-                    ant problems.
-                </p>
-
-            </div>
-
-
-            <!-- GENERAL -->
-
-            <div class="service-card">
-
-                <div class="service-icon">
-                    🏠
-                </div>
-
-                <h3>
-                    General Pest Control
-                </h3>
-
-                <p>
-                    Pest control solutions for
-                    homes, offices and businesses.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================
-     ABOUT
-========================================= -->
-
-<section id="about" class="about-section">
-
-    <div class="container about-container">
-
-        <p class="section-small-title">
-            ABOUT US
-        </p>
-
-
-        <h2 class="section-title">
-            Megacity Pest Control Services
-        </h2>
-
-
-        <div class="about-text">
-
-            <p>
-
-                Megacity Pest Control Services provides
-                pest control solutions for homes, offices,
-                shops and commercial properties in
-                Hyderabad.
-
-            </p>
-
-
-            <p>
-
-                We focus on professional service,
-                customer communication and practical
-                pest control solutions.
-
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================
-     WHY CHOOSE US
-========================================= -->
-
-<section class="section">
-
-    <div class="container">
-
-        <p class="section-small-title">
-            WHY CHOOSE US
-        </p>
-
-
-        <h2 class="section-title">
-            Professional Service
-        </h2>
-
-
-        <div class="features-grid">
-
-
-            <div class="feature">
-
-                <div class="feature-icon">
-                    ✓
-                </div>
-
-                <h3>
-                    Professional Service
-                </h3>
-
-                <p>
-                    Customer-focused pest control
-                    services.
-                </p>
-
-            </div>
-
-
-            <div class="feature">
-
-                <div class="feature-icon">
-                    ✓
-                </div>
-
-                <h3>
-                    Home & Business
-                </h3>
-
-                <p>
-                    Services for residential and
-                    commercial properties.
-                </p>
-
-            </div>
-
-
-            <div class="feature">
-
-                <div class="feature-icon">
-                    ✓
-                </div>
-
-                <h3>
-                    Hyderabad
-                </h3>
-
-                <p>
-                    Serving Hyderabad and surrounding
-                    areas.
-                </p>
-
-            </div>
-
-
-            <div class="feature">
-
-                <div class="feature-icon">
-                    ✓
-                </div>
-
-                <h3>
-                    Easy Contact
-                </h3>
-
-                <p>
-                    Contact us through phone or
-                    WhatsApp.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================
-     SERVICE AREAS
-========================================= -->
-
-<section id="areas" class="areas-section">
-
-    <div class="container">
-
-        <p class="section-small-title">
-            SERVICE AREAS
-        </p>
-
-
-        <h2 class="section-title">
-            Areas We Serve
-        </h2>
-
-
-        <p class="section-description">
-
-            Pest control services available in
-            Hyderabad and surrounding areas.
-
-        </p>
-
-
-        <div class="areas-list">
-
-            <span>Hyderabad</span>
-
-            <span>Secunderabad</span>
-
-            <span>Kukatpally</span>
-
-            <span>Madhapur</span>
-
-            <span>Gachibowli</span>
-
-            <span>Hitech City</span>
-
-            <span>LB Nagar</span>
-
-            <span>Uppal</span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================
-     CUSTOMER ENQUIRY
-========================================= -->
-
-<section id="contact" class="contact-section">
-
-    <div class="container contact-container">
-
-        <p class="section-small-title">
-            CONTACT US
-        </p>
-
-
-        <h2 class="section-title">
-            Request a Free Quote
-        </h2>
-
-
-        <p class="contact-description">
-
-            Tell us about your pest control
-            requirement and we can contact you.
-
-        </p>
-
-
-        <form
-            id="enquiryForm"
-            class="enquiry-form">
-
-
-            <!-- NAME -->
-
-            <div class="form-group">
-
-                <label for="name">
-                    Name *
-                </label>
-
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Your name"
-                    required>
-
-            </div>
-
-
-            <!-- PHONE -->
-
-            <div class="form-group">
-
-                <label for="phone">
-                    Phone Number *
-                </label>
-
-                <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="Your phone number"
-                    required>
-
-            </div>
-
-
-            <!-- SERVICE -->
-
-            <div class="form-group">
-
-                <label for="service">
-                    Service Required
-                </label>
-
-                <select
-                    id="service"
-                    name="service">
-
-                    <option value="">
-                        Select a service
-                    </option>
-
-                    <option value="Cockroach Control">
-                        Cockroach Control
-                    </option>
-
-                    <option value="Termite Control">
-                        Termite Control
-                    </option>
-
-                    <option value="Rat & Rodent Control">
-                        Rat & Rodent Control
-                    </option>
-
-                    <option value="Mosquito Control">
-                        Mosquito Control
-                    </option>
-
-                    <option value="Ant Control">
-                        Ant Control
-                    </option>
-
-                    <option value="General Pest Control">
-                        General Pest Control
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <!-- AREA -->
-
-            <div class="form-group">
-
-                <label for="area">
-                    Area
-                </label>
-
-                <input
-                    type="text"
-                    id="area"
-                    name="area"
-                    placeholder="Your area">
-
-            </div>
-
-
-            <!-- MESSAGE -->
-
-            <div class="form-group">
-
-                <label for="message">
-                    Message
-                </label>
-
-                <textarea
-                    id="message"
-                    name="message"
-                    rows="5"
-                    placeholder="Tell us about your pest problem"></textarea>
-
-            </div>
-
-
-            <!-- SUBMIT -->
+            <!-- MOBILE MENU BUTTON -->
 
             <button
-                type="submit"
-                class="submit-btn">
+                class="menu-button"
+                id="menuButton"
+                aria-label="Open navigation menu">
 
-                Submit Enquiry
+                ☰
 
             </button>
 
 
-            <p
-                id="formMessage"
-                class="form-message">
-            </p>
+            <!-- NAVIGATION -->
 
+            <nav>
 
-        </form>
+                <ul
+                    class="nav-menu"
+                    id="navMenu">
 
+                    <li>
+                        <a href="#home">
+                            Home
+                        </a>
+                    </li>
 
-        <!-- DIRECT CONTACT -->
+                    <li>
+                        <a href="#services">
+                            Services
+                        </a>
+                    </li>
 
-        <div class="direct-contact">
+                    <li>
+                        <a href="#about">
+                            About
+                        </a>
+                    </li>
 
-            <p>
-                Or contact us directly
-            </p>
+                    <li>
+                        <a href="#process">
+                            How It Works
+                        </a>
+                    </li>
 
+                    <li>
+                        <a
+                            href="#contact"
+                            class="nav-button">
 
-            <a
-                href="tel:+919966220530"
-                class="btn call-btn">
+                            Get a Quote
 
-                📞 Call Us
+                        </a>
+                    </li>
 
-            </a>
+                </ul>
 
-
-            <a
-                href="https://wa.me/919966220530"
-                target="_blank"
-                class="btn whatsapp-btn">
-
-                💬 WhatsApp Us
-
-            </a>
+            </nav>
 
         </div>
 
-    </div>
-
-</section>
+    </header>
 
 
+    <!-- =========================================
+         MAIN
+    ========================================== -->
 
-<!-- =========================================
-     FOOTER
-========================================= -->
-
-<footer>
-
-    <div class="footer-content">
+    <main>
 
 
-        <img
-            src="logo.png"
-            alt="Megacity Pest Control"
-            class="footer-logo">
+        <!-- =====================================
+             HERO
+        ====================================== -->
+
+        <section
+            class="hero"
+            id="home">
+
+            <div class="container hero-grid">
 
 
-        <h3>
-            Megacity Pest Control Services
-        </h3>
+                <!-- HERO CONTENT -->
+
+                <div>
+
+                    <span class="eyebrow">
+
+                        Professional Pest Control
+                        in Hyderabad
+
+                    </span>
 
 
-        <p>
-            Professional Pest Control Services
-            in Hyderabad
-        </p>
+                    <h1 class="hero-title">
+
+                        A cleaner,
+                        safer place
+                        starts here.
+
+                    </h1>
 
 
-        <p class="copyright">
+                    <p class="hero-description">
+
+                        Megacity Pest Control Services provides
+                        professional pest control solutions for
+                        homes, offices, shops and commercial
+                        properties.
+
+                    </p>
+
+
+                    <div class="button-group">
+
+
+                        <!-- CALL BUTTON -->
+
+                        <a
+                            href="tel:YOUR_PHONE_NUMBER"
+                            class="button button-primary">
+
+                            ☎ Call Now
+
+                        </a>
+
+
+                        <!-- WHATSAPP BUTTON -->
+
+                        <a
+                            href="https://wa.me/YOUR_WHATSAPP_NUMBER"
+                            target="_blank"
+                            class="button button-secondary">
+
+                            💬 WhatsApp
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HERO LOGO CARD -->
+
+                <div class="hero-card">
+
+                    <img
+                        src="logo.png"
+                        alt="Megacity Pest Control Services"
+                        class="hero-logo"
+                    >
+
+
+                    <div class="hero-features">
+
+                        <div class="hero-feature">
+
+                            <strong>
+                                Homes
+                            </strong>
+
+                            <span>
+                                Residential
+                            </span>
+
+                        </div>
+
+
+                        <div class="hero-feature">
+
+                            <strong>
+                                Offices
+                            </strong>
+
+                            <span>
+                                Commercial
+                            </span>
+
+                        </div>
+
+
+                        <div class="hero-feature">
+
+                            <strong>
+                                Hyderabad
+                            </strong>
+
+                            <span>
+                                Local Service
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             SERVICES
+        ====================================== -->
+
+        <section
+            class="section"
+            id="services">
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <span class="eyebrow">
+
+                        Our Services
+
+                    </span>
+
+
+                    <h2>
+
+                        Complete pest control
+                        solutions
+
+                    </h2>
+
+
+                    <p>
+
+                        We provide pest control services
+                        for common residential and
+                        commercial pest problems.
+
+                    </p>
+
+                </div>
+
+
+                <div class="services-grid">
+
+
+                    <!-- SERVICE 1 -->
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            🪳
+                        </div>
+
+                        <h3>
+                            Cockroach Control
+                        </h3>
+
+                        <p>
+
+                            Treatment solutions for
+                            cockroach activity in kitchens,
+                            homes, offices and commercial
+                            spaces.
+
+                        </p>
+
+                    </article>
+
+
+                    <!-- SERVICE 2 -->
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            🐜
+                        </div>
+
+                        <h3>
+                            Ant Control
+                        </h3>
+
+                        <p>
+
+                            Solutions for ant trails and
+                            recurring ant activity around
+                            your property.
+
+                        </p>
+
+                    </article>
+
+
+                    <!-- SERVICE 3 -->
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            🦟
+                        </div>
+
+                        <h3>
+                            Mosquito Control
+                        </h3>
+
+                        <p>
+
+                            Help reduce mosquito activity
+                            around residential and
+                            commercial areas.
+
+                        </p>
+
+                    </article>
+
+
+                    <!-- SERVICE 4 -->
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            🐀
+                        </div>
+
+                        <h3>
+                            Rodent Control
+                        </h3>
+
+                        <p>
+
+                            Solutions for rats and mice,
+                            including attention to common
+                            activity areas.
+
+                        </p>
+
+                    </article>
+
+
+                    <!-- SERVICE 5 -->
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            🪲
+                        </div>
+
+                        <h3>
+                            Termite Control
+                        </h3>
+
+                        <p>
+
+                            Treatment options for properties
+                            where termite activity is
+                            suspected or confirmed.
+
+                        </p>
+
+                    </article>
+
+
+                    <!-- SERVICE 6 -->
+
+                    <article class="service-card">
+
+                        <div class="service-icon">
+                            🏢
+                        </div>
+
+                        <h3>
+                            Commercial Pest Control
+                        </h3>
+
+                        <p>
+
+                            Pest control solutions for
+                            offices, shops, restaurants
+                            and commercial properties.
+
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             ABOUT
+        ====================================== -->
+
+        <section
+            class="section about"
+            id="about">
+
+            <div class="container about-grid">
+
+
+                <div>
+
+                    <span class="eyebrow">
+
+                        About Megacity
+
+                    </span>
+
+
+                    <h2>
+
+                        Professional service
+                        with a customer-first
+                        approach.
+
+                    </h2>
+
+
+                    <p class="about-text">
+
+                        At Megacity Pest Control Services,
+                        our goal is to understand your pest
+                        problem and provide a clear,
+                        professional service experience.
+
+                    </p>
+
+
+                    <ul class="check-list">
+
+                        <li>
+
+                            <span class="check">
+                                ✓
+                            </span>
+
+                            Residential pest control
+
+                        </li>
+
+
+                        <li>
+
+                            <span class="check">
+                                ✓
+                            </span>
+
+                            Commercial pest control
+
+                        </li>
+
+
+                        <li>
+
+                            <span class="check">
+                                ✓
+                            </span>
+
+                            Clear communication
+
+                        </li>
+
+
+                        <li>
+
+                            <span class="check">
+                                ✓
+                            </span>
+
+                            Service focused on your
+                            pest problem
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="about-card">
+
+                    <h3>
+
+                        We can help with
+
+                    </h3>
+
+
+                    <ul class="about-list">
+
+                        <li>
+                            🏠 Homes & Apartments
+                        </li>
+
+                        <li>
+                            🏢 Offices & Shops
+                        </li>
+
+                        <li>
+                            🍽️ Restaurants
+                        </li>
+
+                        <li>
+                            🏭 Commercial Properties
+                        </li>
+
+                        <li>
+                            📍 Hyderabad & Surrounding Areas
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             HOW IT WORKS
+        ====================================== -->
+
+        <section
+            class="section"
+            id="process">
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <span class="eyebrow">
+
+                        Simple Process
+
+                    </span>
+
+
+                    <h2>
+
+                        How it works
+
+                    </h2>
+
+
+                    <p>
+
+                        Getting started is simple.
+                        Contact us and tell us about
+                        your pest problem.
+
+                    </p>
+
+                </div>
+
+
+                <div class="process-grid">
+
+
+                    <div class="process-card">
+
+                        <div class="process-number">
+                            1
+                        </div>
+
+                        <h3>
+                            Contact Us
+                        </h3>
+
+                        <p>
+
+                            Call or WhatsApp us and
+                            tell us about the pest
+                            problem at your property.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="process-card">
+
+                        <div class="process-number">
+                            2
+                        </div>
+
+                        <h3>
+                            Discuss the Problem
+                        </h3>
+
+                        <p>
+
+                            Share useful details such
+                            as the type of pest and
+                            location.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="process-card">
+
+                        <div class="process-number">
+                            3
+                        </div>
+
+                        <h3>
+                            Schedule Service
+                        </h3>
+
+                        <p>
+
+                            Choose a suitable time
+                            and arrange your pest
+                            control service.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             SERVICE AREAS
+        ====================================== -->
+
+        <section
+            class="section areas">
+
+            <div class="container">
+
+                <div class="areas-box">
+
+                    <span class="eyebrow">
+
+                        Service Area
+
+                    </span>
+
+
+                    <h3>
+
+                        Pest Control Services
+                        in Hyderabad
+
+                    </h3>
+
+
+                    <p>
+
+                        Contact us to check service
+                        availability in your area.
+
+                    </p>
+
+
+                    <div class="area-tags">
+
+                        <span class="area-tag">
+                            Hyderabad
+                        </span>
+
+                        <span class="area-tag">
+                            Amberpet
+                        </span>
+
+                        <span class="area-tag">
+                            Dilsukhnagar
+                        </span>
+
+                        <span class="area-tag">
+                            Uppal
+                        </span>
+
+                        <span class="area-tag">
+                            LB Nagar
+                        </span>
+
+                        <span class="area-tag">
+                            Secunderabad
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CONTACT
+        ====================================== -->
+
+        <section
+            class="section contact-section"
+            id="contact">
+
+            <div class="container">
+
+                <div class="contact-box">
+
+
+                    <div>
+
+                        <h2>
+
+                            Have a pest problem?
+
+                        </h2>
+
+
+                        <p>
+
+                            Contact Megacity Pest Control
+                            Services today to discuss your
+                            requirement.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="button-group">
+
+
+                        <a
+                            href="tel:YOUR_PHONE_NUMBER"
+                            class="button button-primary">
+
+                            ☎ Call Megacity
+
+                        </a>
+
+
+                        <a
+                            href="https://wa.me/YOUR_WHATSAPP_NUMBER"
+                            target="_blank"
+                            class="button button-secondary">
+
+                            💬 WhatsApp Us
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+
+            <!-- COMPANY -->
+
+            <div>
+
+                <img
+                    src="logo.png"
+                    alt="Megacity Pest Control Services Logo"
+                    class="footer-logo"
+                >
+
+
+                <h3>
+                    Megacity Pest Control Services
+                </h3>
+
+
+                <p>
+
+                    Professional pest control
+                    solutions for homes, offices,
+                    shops and commercial properties.
+
+                </p>
+
+            </div>
+
+
+            <!-- QUICK LINKS -->
+
+            <div>
+
+                <h3>
+                    Quick Links
+                </h3>
+
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#home">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#services">
+                            Services
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#about">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#process">
+                            How It Works
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div>
+
+                <h3>
+                    Contact Us
+                </h3>
+
+
+                <ul class="footer-links">
+
+                    <li>
+                        📍 Hyderabad, Telangana
+                    </li>
+
+                    <li>
+                        ☎ YOUR PHONE NUMBER
+                    </li>
+
+                    <li>
+                        💬 WhatsApp Available
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="container copyright">
 
             © 2026 Megacity Pest Control Services.
             All Rights Reserved.
 
-        </p>
+        </div>
 
-    </div>
-
-</footer>
+    </footer>
 
 
+    <!-- =========================================
+         FLOATING WHATSAPP
+    ========================================== -->
 
-<!-- =========================================
-     FLOATING WHATSAPP
-========================================= -->
+    <a
+        href="https://wa.me/YOUR_WHATSAPP_NUMBER"
+        target="_blank"
+        class="whatsapp"
+        aria-label="Contact Megacity Pest Control Services on WhatsApp">
 
-<a
-    href="https://wa.me/919966220530"
-    target="_blank"
-    class="floating-whatsapp"
-    aria-label="Chat with Megacity Pest Control on WhatsApp">
+        💬
 
-    💬
-
-</a>
-
+    </a>
 
 
-<!-- JAVASCRIPT -->
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
 
-<script src="script.js"></script>
+    <script>
+
+        /* ================================
+           MOBILE MENU
+        ================================= */
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const navMenu =
+            document.getElementById("navMenu");
+
+
+        menuButton.addEventListener(
+            "click",
+            function () {
+
+                navMenu.classList.toggle(
+                    "active"
+                );
+
+            }
+        );
+
+
+        /* ================================
+           CLOSE MENU AFTER CLICK
+        ================================= */
+
+        const navLinks =
+            document.querySelectorAll(
+                "#navMenu a"
+            );
+
+
+        navLinks.forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        navMenu.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* ================================
+           CLOSE MENU WHEN CLICKING OUTSIDE
+        ================================= */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    !navMenu.contains(event.target) &&
+                    !menuButton.contains(event.target)
+                ) {
+
+                    navMenu.classList.remove(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
 
 </body>
-
 </html>

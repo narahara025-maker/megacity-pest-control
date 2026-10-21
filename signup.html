@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Customer Signup | Megacity Pest Control</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #edf5ef; color: #183b2b;
+    }
+    .card {
+      max-width: 440px; margin: 30px auto;
+      padding: 26px; background: white;
+      border-radius: 14px; box-shadow: 0 4px 18px #0001;
+    }
+    h1 { text-align: center; font-size: 25px; color: #087443; }
+    h2 { text-align: center; }
+    label { display: block; margin-top: 15px; font-weight: bold; }
+    input {
+      width: 100%; padding: 12px; margin-top: 6px;
+      border: 1px solid #cbd5ce; border-radius: 7px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%; padding: 13px; margin-top: 20px;
+      border: 0; border-radius: 7px;
+      color: white; background: #087443;
+      font-size: 16px; font-weight: bold; cursor: pointer;
+    }
+    button:disabled { opacity: .6; }
+    #message { line-height: 1.5; overflow-wrap: anywhere; }
+    .links { text-align: center; line-height: 2; }
+    a { color: #087443; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Megacity Pest Control Services</h1>
+    <h2>Customer Signup</h2>
+    <p>Create your account. The admin must approve your registration
+       before you can access customer features.</p>
+
+    <form id="signupForm">
+      <label for="name">Full name</label>
+      <input id="name" type="text" maxlength="100"
+             autocomplete="name" required>
+
+      <label for="phone">Mobile number</label>
+      <input id="phone" type="tel" maxlength="20"
+             autocomplete="tel" required>
+
+      <label for="email">Email address</label>
+      <input id="email" type="email" maxlength="254"
+             autocomplete="email" required>
+
+      <label for="password">Password (minimum 8 characters)</label>
+      <input id="password" type="password" minlength="8"
+             autocomplete="new-password" required>
+
+      <button id="submitButton" type="submit">Create Account</button>
+    </form>
+
+    <p id="message" role="status" aria-live="polite"></p>
+
+    <div class="links">
+      Already registered? <a href="login.html">Login</a><br>
+      <a href="index.html">Back to Home</a>
+    </div>
+  </main>
+
+  <script type="module">
+    import { createClient } from
+      'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+    const SUPABASE_URL =
+      'https://waygnxqugnttsbhihmbw.supabase.co';
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      'PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE';
+
+    const supabase = createClient(
+      SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const form = document.getElementById('signupForm');
+    const message = document.getElementById('message');
+    const button = document.getElementById('submitButton');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      message.textContent = '';
+      button.disabled = true;
+
+      const full_name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!full_name || !phone || password.length < 8) {
+        message.textContent = 'Please check your details and password.';
+        button.disabled = false;
+        return;
+      }
+
+      try {
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: { full_name, phone }
+          }
+        });
+
+        if (error) throw error;
+
+        if (data.session) {
+          await supabase.auth.signOut();
+        }
+
+        message.textContent =
+          'Registration submitted. If email confirmation is enabled, confirm your email. Your account will remain pending until an admin approves it.';
+
+        form.reset();
+      } catch (error) {
+        message.textContent = 'Signup failed: ' + error.message;
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

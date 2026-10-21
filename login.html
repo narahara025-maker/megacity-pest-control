@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login | Megacity Pest Control</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #edf5ef; color: #183b2b;
+    }
+    .card {
+      max-width: 440px; margin: 40px auto;
+      padding: 26px; background: white;
+      border-radius: 14px; box-shadow: 0 4px 18px #0001;
+    }
+    h1 { text-align: center; color: #087443; font-size: 25px; }
+    h2 { text-align: center; }
+    label { display: block; margin-top: 16px; font-weight: bold; }
+    input {
+      width: 100%; padding: 12px; margin-top: 6px;
+      border: 1px solid #cbd5ce; border-radius: 7px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%; padding: 13px; margin-top: 20px;
+      border: 0; border-radius: 7px;
+      background: #087443; color: white;
+      font-size: 16px; font-weight: bold; cursor: pointer;
+    }
+    button:disabled { opacity: .6; }
+    #message { line-height: 1.5; overflow-wrap: anywhere; }
+    .links { text-align: center; line-height: 2; }
+    a { color: #087443; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Megacity Pest Control Services</h1>
+    <h2>Customer Login</h2>
+
+    <form id="loginForm">
+      <label for="email">Email address</label>
+      <input id="email" type="email" autocomplete="email" required>
+
+      <label for="password">Password</label>
+      <input id="password" type="password"
+             autocomplete="current-password" required>
+
+      <button id="loginButton" type="submit">Login</button>
+    </form>
+
+    <p id="message" role="status" aria-live="polite"></p>
+
+    <div class="links">
+      New customer? <a href="signup.html">Create an account</a><br>
+      <a href="index.html">Back to Home</a>
+    </div>
+  </main>
+
+  <script type="module">
+    import { createClient } from
+      'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+    const SUPABASE_URL =
+      'https://waygnxqugnttsbhihmbw.supabase.co';
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      'PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE';
+
+    const supabase = createClient(
+      SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const form = document.getElementById('loginForm');
+    const message = document.getElementById('message');
+    const button = document.getElementById('loginButton');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      message.textContent = '';
+      button.disabled = true;
+
+      try {
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        const { data, error } =
+          await supabase.auth.signInWithPassword({ email, password });
+
+        if (error) throw error;
+
+        const { data: profile, error: profileError } =
+          await supabase
+            .from('customer_profiles')
+            .select('role, approval_status')
+            .eq('id', data.user.id)
+            .maybeSingle();
+
+        if (profileError) throw profileError;
+
+        if (!profile) {
+          await supabase.auth.signOut();
+          throw new Error(
+            'Your profile was not found. Please contact the website admin.'
+          );
+        }
+
+        if (profile.role === 'admin' &&
+            profile.approval_status === 'approved') {
+          window.location.href = 'admin.html';
+          return;
+        }
+
+        if (profile.approval_status === 'pending') {
+          await supabase.auth.signOut();
+          message.textContent =
+            'Your account is waiting for admin approval. Please try again after approval.';
+          return;
+        }
+
+        if (profile.approval_status === 'rejected') {
+          await supabase.auth.signOut();
+          message.textContent =
+            'Your registration was not approved. Please contact the admin.';
+          return;
+        }
+
+        if (profile.role === 'customer' &&
+            profile.approval_status === 'approved') {
+          window.location.href = 'index.html';
+          return;
+        }
+
+        await supabase.auth.signOut();
+        message.textContent = 'Your account does not have access.';
+      } catch (error) {
+        message.textContent = 'Login failed: ' + error.message;
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

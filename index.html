@@ -315,8 +315,8 @@ document.getElementById("enquiryForm").addEventListener("submit", async (event) 
       a.textContent = "Send enquiry to WhatsApp";
       statusBox.append(document.createElement("br"), a);
     }
-    event.currentTarget.reset();
-    cart = [];
+document.getElementById("enquiryForm").reset();
+showStatus("Thank you! Your enquiry has been saved successfully.");    cart = [];
     saveCart();
   } catch (error) {
     console.error(error);

@@ -2,1456 +2,414 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#103c2b">
-  <meta name="description" content="Megacity Pest Control Services, Hyderabad. Enquire about residential and commercial pest control services.">
-  <title>Megacity Pest Control Services | Hyderabad</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <style>
-    :root {
-      --green: #103c2b;
-      --green-light: #1c6747;
-      --gold: #e8bd61;
-      --cream: #f7f8f1;
-      --text: #26362c;
-      --muted: #6b786f;
-      --white: #ffffff;
-      --border: #e3e9e2;
-      --shadow: 0 12px 35px rgba(16,60,43,.08);
-      --radius: 18px;
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-
-    body {
-      margin: 0;
-      font-family: "DM Sans", Arial, sans-serif;
-      color: var(--text);
-      background: var(--white);
-      line-height: 1.65;
-    }
-
-    h1, h2, h3, h4 {
-      font-family: "Manrope", Arial, sans-serif;
-      line-height: 1.25;
-    }
-
-    a { color: inherit; }
-    button, input, select, textarea { font: inherit; }
-    button { cursor: pointer; }
-    img { max-width: 100%; }
-
-    .container {
-      width: min(1160px, 90%);
-      margin: 0 auto;
-    }
-
-    .announcement {
-      background: #09291d;
-      color: #f8f4e8;
-      text-align: center;
-      padding: 8px 15px;
-      font-size: 12px;
-      letter-spacing: .3px;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255,255,255,.96);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-    }
-
-    .navbar {
-      min-height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      min-width: 0;
-    }
-
-    .brand-logo {
-      width: 58px;
-      height: 58px;
-      object-fit: contain;
-      border-radius: 12px;
-      flex-shrink: 0;
-    }
-
-    .brand-name {
-      margin: 0;
-      font-size: 17px;
-      font-weight: 800;
-      color: var(--green);
-      line-height: 1.25;
-    }
-
-    .brand-tagline {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      margin-top: 4px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #34483b;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .nav-links a:hover { color: var(--green-light); }
-
-    .button {
-      border: 1px solid transparent;
-      background: var(--green);
-      color: white;
-      padding: 12px 19px;
-      border-radius: 9px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 13px;
-      transition: .2s ease;
-    }
-
-    .button:hover {
-      background: var(--green-light);
-      transform: translateY(-1px);
-    }
-
-    .button.gold {
-      background: var(--gold);
-      color: #1a3425;
-    }
-
-    .button.gold:hover { background: #f0ce7d; }
-
-    .button.outline {
-      background: transparent;
-      border-color: var(--border);
-      color: var(--green);
-    }
-
-    .button.outline:hover { background: var(--cream); }
-    .button.danger { background: #a83333; }
-    .button.small { padding: 8px 12px; font-size: 12px; }
-    .button.full { width: 100%; }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 85% 20%, rgba(232,189,97,.20), transparent 25%),
-        linear-gradient(130deg, #f4f7ed 0%, #edf4e8 55%, #e3eee0 100%);
-      padding: 76px 0 70px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      align-items: center;
-      gap: 50px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--green-light);
-      background: #ffffffb8;
-      border: 1px solid #dce8d8;
-      padding: 7px 12px;
-      border-radius: 30px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .3px;
-    }
-
-    .eyebrow-dot {
-      height: 8px;
-      width: 8px;
-      border-radius: 50%;
-      background: #42986b;
-    }
-
-    .hero h1 {
-      color: var(--green);
-      font-size: clamp(36px, 5vw, 61px);
-      letter-spacing: -2px;
-      margin: 22px 0 18px;
-    }
-
-    .hero h1 span { color: var(--green-light); }
-
-    .hero-copy {
-      color: #596c5e;
-      max-width: 540px;
-      font-size: 16px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 27px;
-    }
-
-    .hero-note {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 17px;
-    }
-
-    .hero-visual {
-      position: relative;
-      min-height: 330px;
-      display: grid;
-      place-items: center;
-    }
-
-    .hero-orb {
-      width: min(350px, 100%);
-      aspect-ratio: 1;
-      border-radius: 48% 52% 44% 56%;
-      background: linear-gradient(140deg, #174b34, #092a1e);
-      display: grid;
-      place-items: center;
-      box-shadow: 0 30px 70px rgba(16,60,43,.22);
-      transform: rotate(-5deg);
-    }
-
-    .hero-orb-inner {
-      width: 82%;
-      height: 82%;
-      border: 1px solid #ffffff45;
-      border-radius: 48% 52% 44% 56%;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      color: white;
-      transform: rotate(5deg);
-      padding: 20px;
-    }
-
-    .hero-orb-inner .shield { font-size: 90px; line-height: 1.2; }
-    .hero-orb-inner h3 { margin: 8px 0 3px; font-size: 22px; }
-    .hero-orb-inner p { margin: 0; font-size: 12px; color: #d7e7da; }
-
-    .floating-card {
-      position: absolute;
-      background: white;
-      padding: 14px 17px;
-      border-radius: 13px;
-      box-shadow: var(--shadow);
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .floating-card.top { top: 15px; right: 0; }
-    .floating-card.bottom { bottom: 12px; left: 0; }
-
-    .trust-strip {
-      border-bottom: 1px solid var(--border);
-      background: white;
-    }
-
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding: 22px 0;
-    }
-
-    .trust-item {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .trust-icon { font-size: 23px; }
-
-    section.content-section { padding: 76px 0; }
-    section.tint { background: var(--cream); }
-
-    .section-heading {
-      text-align: center;
-      max-width: 670px;
-      margin: 0 auto 37px;
-    }
-
-    .section-heading .eyebrow { margin-bottom: 10px; }
-
-    .section-heading h2 {
-      color: var(--green);
-      font-size: clamp(27px, 4vw, 39px);
-      letter-spacing: -1px;
-      margin: 7px 0 12px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      margin: 0;
-      font-size: 14px;
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .service-card {
-      border: 1px solid var(--border);
-      background: white;
-      border-radius: var(--radius);
-      padding: 25px;
-      transition: .22s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-      border-color: #bfd4c2;
-    }
-
-    .service-icon {
-      width: 58px;
-      height: 58px;
-      border-radius: 15px;
-      display: grid;
-      place-items: center;
-      font-size: 30px;
-      background: #eef5eb;
-      margin-bottom: 18px;
-    }
-
-    .service-card h3 {
-      font-size: 18px;
-      color: var(--green);
-      margin: 0 0 9px;
-    }
-
-    .service-card p {
-      color: var(--muted);
-      font-size: 13px;
-      min-height: 45px;
-      margin: 0 0 17px;
-    }
-
-    .service-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .price-note {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .two-column {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 40px;
-      align-items: start;
-    }
-
-    .info-panel {
-      background: var(--green);
-      color: white;
-      border-radius: 22px;
-      padding: 30px;
-    }
-
-    .info-panel h2 { font-size: 30px; margin-top: 0; }
-    .info-panel p { color: #d8e6dc; font-size: 14px; }
-
-    .info-list {
-      list-style: none;
-      padding: 0;
-      margin: 25px 0 0;
-    }
-
-    .info-list li {
-      padding: 10px 0;
-      border-bottom: 1px solid #ffffff20;
-      font-size: 13px;
-    }
-
-    .panel {
-      border: 1px solid var(--border);
-      background: white;
-      padding: 27px;
-      border-radius: var(--radius);
-      box-shadow: 0 8px 25px rgba(16,60,43,.04);
-      min-width: 0;
-    }
-
-    .panel h3 {
-      margin: 0 0 5px;
-      font-size: 22px;
-      color: var(--green);
-    }
-
-    .subtext { font-size: 13px; color: var(--muted); margin-top: 0; }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 13px;
-    }
-
-    .field { margin: 12px 0; }
-    .field.full-width { grid-column: 1 / -1; }
-
-    label {
-      display: block;
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-
-    input, select, textarea {
-      display: block;
-      width: 100%;
-      min-width: 0;
-      border: 1px solid #d9e2d8;
-      background: #fff;
-      padding: 12px 13px;
-      border-radius: 9px;
-      outline: none;
-      color: var(--text);
-      font-size: 13px;
-    }
-
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--green-light);
-      box-shadow: 0 0 0 3px #1c67471a;
-    }
-
-    textarea { resize: vertical; min-height: 100px; }
-
-    .form-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 17px;
-    }
-
-    .status-message {
-      display: block;
-      padding: 12px 14px;
-      margin-top: 15px;
-      border-radius: 9px;
-      background: #edf5ed;
-      color: var(--green);
-      font-size: 13px;
-      overflow-wrap: anywhere;
-    }
-
-    .status-message.error {
-      background: #fff0ef;
-      color: #a52b2b;
-    }
-
-    .hidden { display: none !important; }
-
-    .cart-empty {
-      text-align: center;
-      color: var(--muted);
-      padding: 24px 0;
-      font-size: 13px;
-    }
-
-    .cart-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .cart-row-name { font-weight: 700; font-size: 13px; }
-
-    .cart-summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin: 20px 0;
-      font-weight: 800;
-      color: var(--green);
-    }
-
-    .cart-disclaimer { font-size: 11px; color: var(--muted); }
-
-    .account-status {
-      padding: 14px;
-      background: #eef5eb;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      font-size: 13px;
-    }
-
-    .cta-banner {
-      background: linear-gradient(120deg, #103c2b, #1c6747);
-      border-radius: 22px;
-      color: white;
-      padding: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-    }
-
-    .cta-banner h2 { font-size: 28px; margin: 0 0 8px; }
-    .cta-banner p { margin: 0; color: #d9e7dc; font-size: 13px; }
-
-    footer {
-      background: #08281c;
-      color: white;
-      padding: 45px 0 20px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 35px;
-    }
-
-    footer h3, footer h4 { color: white; }
-    footer p, footer a { color: #d2dfd5; font-size: 12px; }
-    footer a { text-decoration: none; }
-    footer a:hover { color: var(--gold); }
-
-    .footer-links { display: grid; gap: 7px; }
-    .copyright {
-      border-top: 1px solid #ffffff24;
-      margin-top: 30px;
-      padding-top: 17px;
-      text-align: center;
-      color: #b7c8bc;
-      font-size: 11px;
-    }
-
-    .floating-whatsapp {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      z-index: 25;
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      text-decoration: none;
-      color: white;
-      background: #16864a;
-      box-shadow: 0 6px 22px #0002;
-      font-size: 26px;
-    }
-
-    @media (max-width: 900px) {
-      .nav-links { gap: 12px; }
-      .nav-links a { font-size: 12px; }
-      .hero-grid { gap: 25px; }
-      .service-grid { grid-template-columns: repeat(2, 1fr); }
-      .two-column { gap: 22px; }
-    }
-
-    @media (max-width: 700px) {
-      .navbar { padding: 12px 0; flex-wrap: wrap; }
-      .brand-logo { width: 48px; height: 48px; }
-      .brand-name { font-size: 15px; }
-      .nav-links {
-        order: 2;
-        width: 100%;
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding-bottom: 5px;
-      }
-      .nav-links a { white-space: nowrap; }
-      .nav-account { display: none; }
-      .hero { padding: 50px 0; }
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-visual { min-height: 280px; }
-      .hero-orb { width: 260px; }
-      .hero-orb-inner .shield { font-size: 65px; }
-      .floating-card.top { right: 2px; }
-      .floating-card.bottom { left: 2px; }
-      .trust-grid { grid-template-columns: 1fr; gap: 13px; }
-      .trust-item { justify-content: flex-start; }
-      section.content-section { padding: 52px 0; }
-      .service-grid { grid-template-columns: 1fr; }
-      .two-column { grid-template-columns: 1fr; }
-      .form-grid { grid-template-columns: 1fr; }
-      .field.full-width { grid-column: auto; }
-      .cta-banner { padding: 25px; align-items: flex-start; flex-direction: column; }
-      .footer-grid { grid-template-columns: 1fr; gap: 15px; }
-      .panel { padding: 20px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Megacity Pest Control Services in Hyderabad. Contact us for termite, cockroach, mosquito, rodent and other pest control services.">
+<title>Megacity Pest Control Services | Hyderabad</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--green:#126b42;--dark:#093b27;--gold:#e9b949;--light:#f3f8f3;--white:#fff}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:#23352b;background:#fff;line-height:1.6}
+header{background:var(--dark);color:white;padding:14px 5%;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:60px;height:60px;object-fit:contain;background:white;border-radius:10px}
+.brand h2{margin:0;font-size:19px}
+.brand small{color:#f5d77e}
+nav{display:flex;gap:15px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-weight:bold}
+button,.btn{border:0;background:var(--green);color:white;padding:11px 16px;border-radius:8px;cursor:pointer;font-weight:bold;text-decoration:none;display:inline-block}
+button:hover,.btn:hover{background:var(--dark)}
+.gold{background:var(--gold);color:#182b1e}
+.hero{background:linear-gradient(120deg,#093b27ee,#126b42df),url('') center/cover;color:white;padding:75px 7%;text-align:center}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.2;margin:0 auto 18px;max-width:850px}
+.hero p{font-size:18px;max-width:680px;margin:0 auto 25px}
+section{padding:48px 6%}
+.heading{text-align:center;margin-bottom:28px}
+.heading h2{color:var(--dark);font-size:30px;margin-bottom:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{padding:22px;border:1px solid #e0e9e1;border-radius:14px;background:white;box-shadow:0 5px 18px #12341b0a}
+.card h3{color:var(--green);margin-top:0}
+.service-icon{font-size:36px}
+.soft{background:var(--light)}
+form{display:grid;gap:13px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #cbd8cd;border-radius:8px;font:inherit;background:white}
+textarea{min-height:95px;resize:vertical}
+label{font-weight:bold;font-size:14px}
+.field{display:grid;gap:5px}
+.form-wrap{max-width:760px;margin:auto;background:white;padding:25px;border-radius:14px;box-shadow:0 5px 20px #12341b12}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.full{grid-column:1/-1}
+.notice{padding:12px;background:#edf6ed;border-radius:8px;overflow-wrap:anywhere}
+.hidden{display:none!important}
+footer{background:var(--dark);color:white;text-align:center;padding:28px}
+footer a{color:#f5d77e}
+.cart-item{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid #ddd;padding:10px 0}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.small{font-size:13px;color:#627066}
+#status{white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:600px){header{justify-content:center}nav{justify-content:center}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.hero{padding:55px 6%}section{padding:36px 5%}}
+</style>
 </head>
-
 <body>
-  <div class="announcement">
-    MEGACITY PEST CONTROL SERVICES · HYDERABAD, TELANGANA
+<header>
+  <div class="brand">
+    <img src="logo.png" alt="Megacity Pest Control logo"
+         onerror="this.style.display='none'">
+    <div><h2>Megacity Pest Control</h2><small>Safe spaces. Pest-free living.</small></div>
   </div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#enquiry">Book service</a>
+    <a href="#account">Account</a>
+    <a href="#cart">Cart (<span id="cartCount">0</span>)</a>
+  </nav>
+</header>
 
-  <header>
-    <div class="container navbar">
-      <a class="brand" href="#home" aria-label="Megacity Pest Control home">
-        <img class="brand-logo" src="logo.png" alt="Company logo"
-             onerror="this.style.display='none'">
-        <span>
-          <span class="brand-name">Megacity Pest Control</span>
-          <span class="brand-tagline">Protecting your space, naturally</span>
-        </span>
-      </a>
+<main>
+<section class="hero" id="home">
+  <h1>Reliable Pest Control for Your Home & Business</h1>
+  <p>Professional pest-control enquiry services in Hyderabad. Tell us your pest problem and our team can contact you to discuss the next steps.</p>
+  <div class="actions" style="justify-content:center">
+    <a class="btn gold" href="#enquiry">Request a Service</a>
+    <a class="btn" href="#services">Explore Services</a>
+  </div>
+</section>
 
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#cart">Cart (<span id="cart-count">0</span>)</a>
-        <a href="#account">My Account</a>
-        <a href="#contact">Enquiry</a>
-      </nav>
+<section id="services">
+  <div class="heading"><h2>Our Services</h2><p>Choose a service to add it to your cart or enquiry.</p></div>
+  <div class="grid">
+    <article class="card"><div class="service-icon">🪳</div><h3>Cockroach Control</h3><p>Enquire about cockroach treatment for your property.</p><button onclick="addCart('Cockroach Control')">Add to cart</button></article>
+    <article class="card"><div class="service-icon">🐜</div><h3>Termite Control</h3><p>Ask about termite inspection and treatment options.</p><button onclick="addCart('Termite Control')">Add to cart</button></article>
+    <article class="card"><div class="service-icon">🐀</div><h3>Rodent Control</h3><p>Enquire about rats and mice prevention.</p><button onclick="addCart('Rodent Control')">Add to cart</button></article>
+    <article class="card"><div class="service-icon">🦟</div><h3>Mosquito Control</h3><p>Ask about mosquito management for your property.</p><button onclick="addCart('Mosquito Control')">Add to cart</button></article>
+    <article class="card"><div class="service-icon">🛏️</div><h3>Bed Bug Control</h3><p>Discuss bed bug treatment for rooms and furniture.</p><button onclick="addCart('Bed Bug Control')">Add to cart</button></article>
+    <article class="card"><div class="service-icon">🏠</div><h3>General Pest Control</h3><p>Tell us about other pest issues at your home or business.</p><button onclick="addCart('General Pest Control')">Add to cart</button></article>
+  </div>
+</section>
 
-      <a class="button nav-account" href="#account">Login / Signup</a>
+<section class="soft" id="cart">
+  <div class="heading"><h2>Your Service Cart</h2><p>Your selections are stored in this browser only, until you submit an enquiry.</p></div>
+  <div class="form-wrap">
+    <div id="cartItems"></div>
+    <div class="actions" style="margin-top:15px">
+      <button onclick="clearCart()">Clear cart</button>
+      <button class="gold" onclick="useCart()">Use services in enquiry form</button>
     </div>
-  </header>
+    <p class="small">Prices are confirmed after inspection or discussion. Adding a service does not make a payment or booking.</p>
+  </div>
+</section>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow"><span class="eyebrow-dot"></span> YOUR LOCAL PEST CONTROL TEAM</span>
-          <h1>A cleaner home.<br>A <span>safer tomorrow.</span></h1>
-          <p class="hero-copy">
-            Discover pest-control services for your home, office or commercial
-            property. Tell us what you need, and our team can contact you
-            to discuss the next steps.
-          </p>
-
-          <div class="hero-actions">
-            <a class="button" href="#services">Explore Services ↗</a>
-            <a class="button outline" href="#contact">Request a Callback</a>
-          </div>
-
-          <p class="hero-note">Clear communication · Service enquiries · Local support</p>
+<section id="enquiry">
+  <div class="heading"><h2>Request a Service</h2><p>Submit your details so the business can contact you.</p></div>
+  <div class="form-wrap">
+    <form id="enquiryForm">
+      <div class="form-grid">
+        <div class="field"><label for="name">Full name *</label><input id="name" name="name" required maxlength="100" autocomplete="name"></div>
+        <div class="field"><label for="phone">Mobile number *</label><input id="phone" name="phone" required type="tel" maxlength="20" autocomplete="tel"></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" maxlength="150" autocomplete="email"></div>
+        <div class="field"><label for="area">Area / locality *</label><input id="area" name="area" required maxlength="150"></div>
+        <div class="field full"><label for="address">Full address</label><textarea id="address" name="address" maxlength="1000"></textarea></div>
+        <div class="field"><label for="pest">Pest / service *</label>
+          <select id="pest" name="pest" required>
+            <option value="">Choose a service</option>
+            <option>Termite</option><option>Cockroach</option><option>Rodent</option>
+            <option>Mosquito</option><option>Bed Bug</option><option>General Pest Control</option><option>Other</option>
+          </select>
         </div>
-
-        <div class="hero-visual" aria-label="Pest protection illustration">
-          <div class="hero-orb">
-            <div class="hero-orb-inner">
-              <div>
-                <div class="shield">🛡️</div>
-                <h3>Peace of Mind</h3>
-                <p>Protection starts with the right enquiry.</p>
-              </div>
-            </div>
-          </div>
-          <div class="floating-card top">🏠 Home & Office</div>
-          <div class="floating-card bottom">🌿 Professional Care</div>
+        <div class="field"><label for="property">Property type</label>
+          <select id="property" name="property">
+            <option value="">Select property</option><option>House</option><option>Apartment</option><option>Office</option><option>Restaurant</option><option>Shop</option><option>Warehouse</option><option>Other</option>
+          </select>
         </div>
+        <div class="field"><label for="date">Preferred date</label><input id="date" name="date" type="date"></div>
+        <div class="field"><label for="time">Preferred time</label>
+          <select id="time" name="time"><option value="">No preference</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select>
+        </div>
+        <div class="field full"><label for="message">Additional details</label><textarea id="message" name="message" maxlength="2000" placeholder="Describe your pest problem..."></textarea></div>
       </div>
-    </section>
+      <button type="submit" id="submitBtn">Submit Enquiry</button>
+      <p id="status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
 
-    <div class="trust-strip">
-      <div class="container trust-grid">
-        <div class="trust-item"><span class="trust-icon">🏡</span> Residential Enquiries</div>
-        <div class="trust-item"><span class="trust-icon">🏢</span> Commercial Enquiries</div>
-        <div class="trust-item"><span class="trust-icon">📍</span> Hyderabad, Telangana</div>
-      </div>
+<section class="soft" id="account">
+  <div class="heading"><h2>Customer Account</h2><p>Create an account or log in to your account.</p></div>
+  <div class="form-wrap">
+    <p id="authStatus" class="notice" role="status" aria-live="polite">Connect your Supabase project to enable account features.</p>
+    <div id="authForms">
+      <form id="signupForm">
+        <h3>Create an account</h3>
+        <div class="field"><label for="signupEmail">Email</label><input id="signupEmail" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="signupPassword">Password (at least 6 characters)</label><input id="signupPassword" type="password" required minlength="6" autocomplete="new-password"></div>
+        <button type="submit">Sign up</button>
+      </form>
+      <hr style="margin:25px 0;border:0;border-top:1px solid #ddd">
+      <form id="loginForm">
+        <h3>Log in</h3>
+        <div class="field"><label for="loginEmail">Email</label><input id="loginEmail" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="loginPassword">Password</label><input id="loginPassword" type="password" required autocomplete="current-password"></div>
+        <button type="submit">Log in</button>
+        <button type="button" onclick="resetPassword()">Forgot password?</button>
+      </form>
     </div>
-
-    <section class="content-section" id="services">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">OUR SERVICES</span>
-          <h2>Find the right pest-control service</h2>
-          <p>Choose the service you need and add it to your cart. Our team can discuss the treatment and price with you.</p>
-        </div>
-        <div class="service-grid" id="service-list"></div>
-      </div>
-    </section>
-
-    <section class="content-section tint" id="cart">
-      <div class="container two-column">
-        <div>
-          <span class="eyebrow">YOUR SELECTION</span>
-          <h2 style="color:var(--green);font-size:34px;margin:15px 0 10px;">Your service cart</h2>
-          <p style="color:var(--muted);font-size:14px;">
-            Select one or more services before sending your enquiry.
-            No payment is collected through this demo cart.
-          </p>
-          <ul class="info-list" style="color:var(--text);">
-            <li>✓ Choose services that match your needs</li>
-            <li>✓ Send your details through the enquiry form</li>
-            <li>✓ Discuss pricing and appointment availability with the team</li>
-          </ul>
-        </div>
-
-        <div class="panel">
-          <h3>Selected services</h3>
-          <p class="subtext">Review your choices below.</p>
-          <div id="cart-items"></div>
-          <div class="cart-summary">
-            <span>Services selected</span>
-            <span id="cart-total">0</span>
-          </div>
-          <p class="cart-disclaimer">Final pricing is confirmed after discussing your requirements.</p>
-          <div class="form-actions">
-            <button class="button" onclick="goToEnquiry()">Continue to Enquiry →</button>
-            <button class="button outline" onclick="clearCart()">Clear Cart</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section" id="account">
-      <div class="container two-column">
-        <div class="info-panel">
-          <span class="eyebrow">CUSTOMER ACCOUNT</span>
-          <h2 style="margin-top:20px;">Welcome to Megacity</h2>
-          <p>
-            Create an account using your email and password, or log in
-            to your existing account.
-          </p>
-          <ul class="info-list">
-            <li>🔐 Account authentication by Supabase</li>
-            <li>📧 Email confirmation when enabled</li>
-            <li>🔑 Password reset by email</li>
-            <li>🛡️ Passwords are managed by Supabase Authentication</li>
-          </ul>
-        </div>
-
-        <div class="panel">
-          <div id="auth-forms">
-            <h3>Create your account</h3>
-            <p class="subtext">New customer? Sign up below. Already registered? Use Login.</p>
-
-            <form id="signup-form">
-              <div class="field">
-                <label for="signup-name">Full name</label>
-                <input id="signup-name" type="text" autocomplete="name"
-                       maxlength="100" required placeholder="Your full name">
-              </div>
-              <div class="field">
-                <label for="signup-email">Email address</label>
-                <input id="signup-email" type="email" autocomplete="email"
-                       maxlength="254" required placeholder="you@example.com">
-              </div>
-              <div class="field">
-                <label for="signup-password">Password</label>
-                <input id="signup-password" type="password" autocomplete="new-password"
-                       minlength="8" required placeholder="At least 8 characters">
-              </div>
-              <button class="button full" id="signup-button" type="submit">Create Account</button>
-            </form>
-
-            <div style="height:1px;background:var(--border);margin:23px 0;"></div>
-
-            <form id="login-form">
-              <h3 style="font-size:18px;">Already have an account?</h3>
-              <div class="field">
-                <label for="login-email">Email address</label>
-                <input id="login-email" type="email" autocomplete="username"
-                       maxlength="254" required placeholder="Your registered email">
-              </div>
-              <div class="field">
-                <label for="login-password">Password</label>
-                <input id="login-password" type="password" autocomplete="current-password"
-                       required placeholder="Your password">
-              </div>
-              <div class="form-actions">
-                <button class="button" id="login-button" type="submit">Login</button>
-                <button class="button outline" id="reset-button" type="button">Forgot Password?</button>
-              </div>
-            </form>
-          </div>
-
-          <div id="account-details" class="hidden">
-            <h3>Your account</h3>
-            <div class="account-status">
-              <strong>You are logged in.</strong>
-              <p id="signed-in-as" style="margin-bottom:0;"></p>
-            </div>
-            <p class="subtext">You can now use your authenticated customer account.</p>
-            <button class="button danger" id="logout-button" type="button">Logout</button>
-          </div>
-
-          <div id="auth-message" class="status-message" role="status" aria-live="polite">
-            Connect your Supabase project to enable signup and login.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section tint" id="contact">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">GET IN TOUCH</span>
-          <h2>Request a service enquiry</h2>
-          <p>Enter your contact details and tell us what you need. Your enquiry will be saved to the connected Supabase database.</p>
-        </div>
-
-        <div class="two-column">
-          <div>
-            <h3 style="color:var(--green);font-size:25px;">Let's discuss your pest problem.</h3>
-            <p style="color:var(--muted);font-size:14px;">
-              Share your name, phone number, location and the service
-              you are interested in. Please provide a correct phone number
-              so your team can follow up.
-            </p>
-            <div class="card" style="margin-top:22px;">
-              <div class="service-icon">📲</div>
-              <h3>Prefer WhatsApp?</h3>
-              <p>Send your enquiry directly to our business WhatsApp number.</p>
-              <a class="button" id="whatsapp-link" href="https://wa.me/" target="_blank" rel="noopener">Open WhatsApp ↗</a>
-            </div>
-          </div>
-
-          <div class="panel">
-            <h3>Customer enquiry form</h3>
-            <p class="subtext">Fields marked * are required.</p>
-
-            <form id="enquiry-form">
-              <div class="form-grid">
-                <div class="field">
-                  <label for="customer-name">Full name *</label>
-                  <input id="customer-name" type="text" required maxlength="100"
-                         autocomplete="name" placeholder="Your name">
-                </div>
-                <div class="field">
-                  <label for="customer-phone">Mobile number *</label>
-                  <input id="customer-phone" type="tel" required maxlength="20"
-                         autocomplete="tel" placeholder="Your phone number">
-                </div>
-                <div class="field full-width">
-                  <label for="customer-area">Area / Location</label>
-                  <input id="customer-area" type="text" maxlength="150"
-                         autocomplete="address-level2" placeholder="Area in Hyderabad">
-                </div>
-                <div class="field full-width">
-                  <label for="customer-service">Service required *</label>
-                  <select id="customer-service" required>
-                    <option value="">Choose a service</option>
-                    <option>Cockroach Control</option>
-                    <option>Termite Control</option>
-                    <option>Rodent Control</option>
-                    <option>Mosquito Control</option>
-                    <option>Bed Bug Control</option>
-                    <option>Ant Control</option>
-                    <option>General Pest Control</option>
-                    <option>Multiple Services from Cart</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div class="field full-width">
-                  <label for="customer-message">Additional details</label>
-                  <textarea id="customer-message" maxlength="2000"
-                            placeholder="Tell us about the pest problem..."></textarea>
-                </div>
-              </div>
-
-              <button class="button full" id="submit-enquiry" type="submit">
-                Submit Enquiry →
-              </button>
-            </form>
-
-            <div id="enquiry-message" class="status-message hidden"
-                 role="status" aria-live="polite"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section">
-      <div class="container">
-        <div class="cta-banner">
-          <div>
-            <h2>Ready to take the next step?</h2>
-            <p>Choose a service or send your enquiry to Megacity Pest Control Services.</p>
-          </div>
-          <a class="button gold" href="#contact">Send an Enquiry ↗</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h3>Megacity Pest Control Services</h3>
-          <p>Helping residential and commercial customers enquire about pest-control solutions in Hyderabad, Telangana.</p>
-        </div>
-        <div>
-          <h4>Quick Links</h4>
-          <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#services">Our Services</a>
-            <a href="#account">Login / Signup</a>
-            <a href="#contact">Customer Enquiry</a>
-          </div>
-        </div>
-        <div>
-          <h4>Contact</h4>
-          <div class="footer-links">
-            <a href="#contact">Request a Callback</a>
-            <a id="footer-phone" href="#contact">Add your business phone</a>
-            <a id="footer-whatsapp" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp Us</a>
-          </div>
-        </div>
-      </div>
-      <div class="copyright">
-        © <span id="year"></span> Megacity Pest Control Services. All rights reserved.
-      </div>
+    <div id="signedIn" class="hidden">
+      <p id="userEmail"></p>
+      <button onclick="logout()">Log out</button>
     </div>
-  </footer>
+  </div>
+</section>
+</main>
 
-  <a class="floating-whatsapp" id="floating-whatsapp"
-     href="https://wa.me/" target="_blank" rel="noopener"
-     aria-label="Contact us on WhatsApp">☏</a>
+<footer>
+  <h3>Megacity Pest Control Services</h3>
+  <p>Serving homes and businesses in Hyderabad.</p>
+  <p><a href="#enquiry">Request an enquiry</a> · <a href="#services">Our services</a></p>
+  <p class="small" style="color:#d8e7dc">Treatment, availability and prices are confirmed individually. Submitting an enquiry is not a confirmed appointment.</p>
+</footer>
 
-  <script>
-    // =========================================================
-    // STEP 1: SUPABASE SETTINGS
-    // Get these from your NEW Supabase project named "pestcontrol".
-    // Use your Project URL and publishable key (or legacy anon key).
-    // NEVER put a service_role or secret key in website code.
-    // =========================================================
+<script>
+/* SUPABASE CONFIGURATION */
+const SUPABASE_URL = "https://waygnxqugnttsbhihmbw.supabase.co";
+const SUPABASE_KEY = "PASTE_YOUR_PUBLISHABLE_KEY_HERE";
 
-    const SUPABASE_URL = "PASTE_YOUR_PROJECT_URL";
-    const SUPABASE_KEY = "PASTE_YOUR_PUBLISHABLE_OR_ANON_KEY";
+/* Optional: enter your WhatsApp number with country code, digits only.
+   Example format for India: 91 followed by the 10-digit number. */
+const BUSINESS_WHATSAPP = "";
 
-    // STEP 2: BUSINESS CONTACT DETAILS
-    // Replace the examples with your actual business details.
-    // WhatsApp must contain digits only, including country code.
-    // Example format for India: 919876543210
-    const BUSINESS_WHATSAPP = "91XXXXXXXXXX";
-    const BUSINESS_PHONE = "+91XXXXXXXXXX";
+let db = null;
+let cart = JSON.parse(localStorage.getItem("megacityCart") || "[]");
 
-    const SUPABASE_CONFIGURED =
-      SUPABASE_URL.startsWith("https://") &&
-      !SUPABASE_URL.includes("PASTE_") &&
-      SUPABASE_KEY.length > 20 &&
-      !SUPABASE_KEY.includes("PASTE_");
+const statusBox = document.getElementById("status");
+const authStatus = document.getElementById("authStatus");
 
-    let supabaseClient = null;
+function showAuth(message) {
+  authStatus.textContent = message;
+}
+function showStatus(message) {
+  statusBox.textContent = message;
+}
+function client() {
+  if (!db) throw new Error("Supabase is not configured. Add your publishable key in index.html and save the file.");
+  return db;
+}
 
-    if (SUPABASE_CONFIGURED && window.supabase) {
-      supabaseClient = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-      );
+/* Cart: local to this browser; not a payment system. */
+function saveCart() {
+  localStorage.setItem("megacityCart", JSON.stringify(cart));
+  document.getElementById("cartCount").textContent = cart.length;
+  const area = document.getElementById("cartItems");
+  area.replaceChildren();
+  if (!cart.length) {
+    area.textContent = "Your cart is empty.";
+    return;
+  }
+  cart.forEach((item, index) => {
+    const row = document.createElement("div");
+    row.className = "cart-item";
+    const name = document.createElement("span");
+    name.textContent = item;
+    const remove = document.createElement("button");
+    remove.textContent = "Remove";
+    remove.type = "button";
+    remove.onclick = () => { cart.splice(index, 1); saveCart(); };
+    row.append(name, remove);
+    area.append(row);
+  });
+}
+function addCart(name) {
+  cart.push(name);
+  saveCart();
+  alert(name + " added to your cart.");
+}
+function clearCart() {
+  cart = [];
+  saveCart();
+}
+function useCart() {
+  if (cart.length) {
+    const select = document.getElementById("pest");
+    const known = cart[0].replace(" Control", "");
+    const match = [...select.options].find(o => o.text.toLowerCase().includes(known.toLowerCase()));
+    if (match) select.value = match.value;
+    document.getElementById("message").value =
+      "Services selected: " + [...cart].join(", ") +
+      (document.getElementById("message").value ? "\n" + document.getElementById("message").value : "");
+  }
+  location.hash = "enquiry";
+}
+saveCart();
+
+/* Read enquiry details if the page was opened with form parameters. */
+const params = new URLSearchParams(location.search);
+for (const field of ["name","area","address","email","date","time","message"]) {
+  const el = document.getElementById(field);
+  const value = params.get(field);
+  if (el && value && !el.value) el.value = value;
+}
+const mobileParam = params.get("mobile");
+if (mobileParam) document.getElementById("phone").value = mobileParam;
+const pestParam = params.get("pest");
+if (pestParam) {
+  const el = document.getElementById("pest");
+  const opt = [...el.options].find(o => o.text.toLowerCase().includes(pestParam.toLowerCase()));
+  if (opt) el.value = opt.value;
+}
+const propertyParam = params.get("property");
+if (propertyParam) document.getElementById("property").value = propertyParam;
+
+/* Initialise Supabase without crashing the rest of the page. */
+if (window.supabase && SUPABASE_URL.startsWith("https://") &&
+    SUPABASE_KEY !== "PASTE_YOUR_PUBLISHABLE_KEY_HERE" &&
+    SUPABASE_KEY.trim().length > 10) {
+  db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  showAuth("Supabase configured. You can create an account or log in.");
+} else {
+  showAuth("Connect your Supabase project first by adding your Project URL and publishable key in the code.");
+}
+
+/* Save enquiry to the existing customer_enquiries table.
+   Current columns used: name, phone, service, area, message. */
+document.getElementById("enquiryForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const btn = document.getElementById("submitBtn");
+  btn.disabled = true;
+  showStatus("Submitting your enquiry...");
+  try {
+    const form = new FormData(event.currentTarget);
+    const details = [
+      form.get("message") ? "Details: " + form.get("message") : "",
+      form.get("email") ? "Email: " + form.get("email") : "",
+      form.get("address") ? "Address: " + form.get("address") : "",
+      form.get("property") ? "Property: " + form.get("property") : "",
+      form.get("date") ? "Preferred date: " + form.get("date") : "",
+      form.get("time") ? "Preferred time: " + form.get("time") : ""
+    ].filter(Boolean).join("\n");
+
+    const record = {
+      name: String(form.get("name")).trim(),
+      phone: String(form.get("phone")).trim(),
+      service: String(form.get("pest") || "").trim(),
+      area: String(form.get("area") || "").trim(),
+      message: details || null
+    };
+
+    const { error } = await client()
+      .from("customer_enquiries")
+      .insert(record);
+
+    if (error) throw error;
+    showStatus("Thank you! Your enquiry has been saved successfully.");
+
+    if (BUSINESS_WHATSAPP) {
+      const text = "New pest-control enquiry\n" +
+        "Name: " + record.name + "\nMobile: " + record.phone +
+        "\nService: " + record.service + "\nArea: " + record.area +
+        "\n" + details;
+      const link = "https://wa.me/" + BUSINESS_WHATSAPP + "?text=" + encodeURIComponent(text);
+      const a = document.createElement("a");
+      a.href = link;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.className = "btn";
+      a.textContent = "Send enquiry to WhatsApp";
+      statusBox.append(document.createElement("br"), a);
     }
+    event.currentTarget.reset();
+    cart = [];
+    saveCart();
+  } catch (error) {
+    console.error(error);
+    showStatus("Enquiry was not saved: " + (error.message || "Unknown error") +
+      "\nCheck your Supabase key, table name, and table permissions.");
+  } finally {
+    btn.disabled = false;
+  }
+});
 
-    const services = [
-      {
-        name: "Cockroach Control",
-        icon: "🪳",
-        description: "Enquire about treatment options for cockroach problems."
-      },
-      {
-        name: "Termite Control",
-        icon: "🏠",
-        description: "Ask about termite inspections and suitable treatment."
-      },
-      {
-        name: "Rodent Control",
-        icon: "🐀",
-        description: "Discuss ways to manage rats and mice."
-      },
-      {
-        name: "Mosquito Control",
-        icon: "🦟",
-        description: "Ask about mosquito-control options for your property."
-      },
-      {
-        name: "Bed Bug Control",
-        icon: "🛏️",
-        description: "Enquire about bed bug inspection and treatment."
-      },
-      {
-        name: "General Pest Control",
-        icon: "🛡️",
-        description: "Tell us about other pest problems at your property."
-      }
-    ];
-
-    // Cart is stored only in this browser, not in the database.
-    let cart = [];
-
-    try {
-      const savedCart = JSON.parse(
-        localStorage.getItem("megacity_pest_cart") || "[]"
-      );
-
-      if (
-        Array.isArray(savedCart) &&
-        savedCart.every(name => services.some(s => s.name === name))
-      ) {
-        cart = [...new Set(savedCart)];
-      }
-    } catch (_) {
-      cart = [];
-    }
-
-    function showMessage(elementId, message, isError = false) {
-      const el = document.getElementById(elementId);
-      el.textContent = message;
-      el.classList.remove("hidden", "error");
-
-      if (isError) el.classList.add("error");
-    }
-
-    function setAuthMessage(message, isError = false) {
-      showMessage("auth-message", message, isError);
-    }
-
-    function setEnquiryMessage(message, isError = false) {
-      showMessage("enquiry-message", message, isError);
-    }
-
-    function renderServices() {
-      const container = document.getElementById("service-list");
-      container.replaceChildren();
-
-      services.forEach(service => {
-        const card = document.createElement("article");
-        card.className = "service-card";
-
-        const icon = document.createElement("div");
-        icon.className = "service-icon";
-        icon.textContent = service.icon;
-
-        const title = document.createElement("h3");
-        title.textContent = service.name;
-
-        const description = document.createElement("p");
-        description.textContent = service.description;
-
-        const bottom = document.createElement("div");
-        bottom.className = "service-bottom";
-
-        const price = document.createElement("span");
-        price.className = "price-note";
-        price.textContent = "Price on enquiry";
-
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "button small";
-        button.textContent = cart.includes(service.name)
-          ? "Added ✓"
-          : "Add to Cart +";
-        button.setAttribute(
-          "aria-pressed",
-          cart.includes(service.name) ? "true" : "false"
-        );
-        button.onclick = () => addToCart(service.name);
-
-        bottom.append(price, button);
-        card.append(icon, title, description, bottom);
-        container.append(card);
-      });
-    }
-
-    function saveCart() {
-      localStorage.setItem("megacity_pest_cart", JSON.stringify(cart));
-      renderCart();
-      renderServices();
-    }
-
-    function addToCart(name) {
-      if (!cart.includes(name)) cart.push(name);
-      saveCart();
-      document.getElementById("cart").scrollIntoView({ behavior: "smooth" });
-    }
-
-    function removeFromCart(name) {
-      cart = cart.filter(item => item !== name);
-      saveCart();
-    }
-
-    function clearCart() {
-      cart = [];
-      saveCart();
-    }
-
-    function renderCart() {
-      document.getElementById("cart-count").textContent = cart.length;
-      document.getElementById("cart-total").textContent = cart.length;
-
-      const container = document.getElementById("cart-items");
-      container.replaceChildren();
-
-      if (!cart.length) {
-        const empty = document.createElement("div");
-        empty.className = "cart-empty";
-        empty.textContent = "Your cart is empty. Explore our services to get started.";
-        container.append(empty);
-        return;
-      }
-
-      cart.forEach(name => {
-        const row = document.createElement("div");
-        row.className = "cart-row";
-
-        const label = document.createElement("span");
-        label.className = "cart-row-name";
-        label.textContent = name;
-
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "button small outline";
-        button.textContent = "Remove";
-        button.onclick = () => removeFromCart(name);
-
-        row.append(label, button);
-        container.append(row);
-      });
-    }
-
-    function goToEnquiry() {
-      if (cart.length) {
-        document.getElementById("customer-service").value =
-          "Multiple Services from Cart";
-
-        const details = document.getElementById("customer-message");
-        details.value = "Requested services: " + cart.join(", ") +
-          (details.value ? "\n" + details.value : "");
-      }
-
-      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
-    }
-
-    function configuredOrExplain() {
-      if (!supabaseClient) {
-        setAuthMessage(
-          "Supabase is not connected yet. Add the Project URL and publishable key in the script at the bottom of index.html.",
-          true
-        );
-        return false;
-      }
-      return true;
-    }
-
-    // =========================================================
-    // SIGNUP: accounts are created in Supabase Authentication.
-    // Passwords are not inserted into customer tables.
-    // =========================================================
-
-    document.getElementById("signup-form").addEventListener("submit", async event => {
-      event.preventDefault();
-      if (!configuredOrExplain()) return;
-
-      const name = document.getElementById("signup-name").value.trim();
-      const email = document.getElementById("signup-email").value.trim();
-      const password = document.getElementById("signup-password").value;
-
-      if (!name || !email || password.length < 8) {
-        setAuthMessage("Enter your name, a valid email and a password of at least 8 characters.", true);
-        return;
-      }
-
-      const button = document.getElementById("signup-button");
-      button.disabled = true;
-      button.textContent = "Creating account...";
-
-      try {
-        const { data, error } = await supabaseClient.auth.signUp({
-          email,
-          password,
-          options: {
-            data: { full_name: name }
-          }
-        });
-
-        if (error) throw error;
-
-        if (data.session) {
-          setAuthMessage("Your account was created successfully.");
-        } else {
-          setAuthMessage("Signup received. Check your email for a confirmation link before logging in.");
-        }
-      } catch (error) {
-        setAuthMessage(error.message || "Signup failed. Please try again.", true);
-      } finally {
-        button.disabled = false;
-        button.textContent = "Create Account";
-      }
+/* Sign up */
+document.getElementById("signupForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  try {
+    showAuth("Creating your account...");
+    const email = document.getElementById("signupEmail").value.trim();
+    const password = document.getElementById("signupPassword").value;
+    const { data, error } = await client().auth.signUp({
+      email, password,
+      options: { emailRedirectTo: location.origin + location.pathname + "#account" }
     });
+    if (error) throw error;
+    showAuth(data.session
+      ? "Account created and signed in."
+      : "Signup submitted. If email confirmation is enabled, check your inbox to confirm your account.");
+    updateSession();
+  } catch (error) {
+    showAuth("Signup error: " + error.message);
+  }
+});
 
-    // =========================================================
-    // LOGIN
-    // =========================================================
+/* Log in */
+document.getElementById("loginForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  try {
+    showAuth("Logging in...");
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+    const { error } = await client().auth.signInWithPassword({ email, password });
+    if (error) throw error;
+    showAuth("You are logged in.");
+    updateSession();
+  } catch (error) {
+    showAuth("Login error: " + error.message);
+  }
+});
 
-    document.getElementById("login-form").addEventListener("submit", async event => {
-      event.preventDefault();
-      if (!configuredOrExplain()) return;
-
-      const email = document.getElementById("login-email").value.trim();
-      const password = document.getElementById("login-password").value;
-
-      const button = document.getElementById("login-button");
-      button.disabled = true;
-      button.textContent = "Logging in...";
-
-      try {
-        const { error } = await supabaseClient.auth.signInWithPassword({
-          email,
-          password
-        });
-
-        if (error) throw error;
-        setAuthMessage("Login successful.");
-      } catch (error) {
-        setAuthMessage(error.message || "Login failed. Check your email and password.", true);
-      } finally {
-        button.disabled = false;
-        button.textContent = "Login";
-      }
+async function resetPassword() {
+  const email = document.getElementById("loginEmail").value.trim();
+  if (!email) {
+    showAuth("Enter your email in the Log in email field first, then click Forgot password.");
+    return;
+  }
+  try {
+    const { error } = await client().auth.resetPasswordForEmail(email, {
+      redirectTo: location.origin + location.pathname + "#account"
     });
+    if (error) throw error;
+    showAuth("If the email is registered, password reset instructions will be sent. Check your inbox.");
+  } catch (error) {
+    showAuth("Password reset error: " + error.message);
+  }
+}
 
-    // =========================================================
-    // PASSWORD RESET
-    // =========================================================
+async function logout() {
+  try {
+    const { error } = await client().auth.signOut();
+    if (error) throw error;
+    showAuth("You have logged out.");
+    updateSession();
+  } catch (error) {
+    showAuth("Logout error: " + error.message);
+  }
+}
 
-    document.getElementById("reset-button").addEventListener("click", async () => {
-      if (!configuredOrExplain()) return;
-
-      const email = document.getElementById("login-email").value.trim();
-
-      if (!email) {
-        setAuthMessage("Enter your email in the Login email field first.", true);
-        return;
-      }
-
-      try {
-        const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-          redirectTo: window.location.origin + window.location.pathname
-        });
-
-        if (error) throw error;
-
-        setAuthMessage("If the account exists, a password-reset email will be sent.");
-      } catch (error) {
-        setAuthMessage(error.message || "Could not request a password reset.", true);
-      }
-    });
-
-    // =========================================================
-    // LOGOUT AND ACCOUNT DISPLAY
-    // =========================================================
-
-    async function refreshAccount() {
-      const forms = document.getElementById("auth-forms");
-      const details = document.getElementById("account-details");
-
-      if (!supabaseClient) {
-        forms.classList.remove("hidden");
-        details.classList.add("hidden");
-        return;
-      }
-
-      try {
-        const { data, error } = await supabaseClient.auth.getSession();
-        if (error) throw error;
-
-        const user = data.session?.user;
-
-        forms.classList.toggle("hidden", Boolean(user));
-        details.classList.toggle("hidden", !user);
-
-        if (user) {
-          document.getElementById("signed-in-as").textContent = user.email || "";
-          document.getElementById("customer-name").value =
-            document.getElementById("customer-name").value ||
-            user.user_metadata?.full_name || "";
-        }
-      } catch (error) {
-        setAuthMessage(error.message || "Could not check your account.", true);
-      }
-    }
-
-    document.getElementById("logout-button").addEventListener("click", async () => {
-      if (!supabaseClient) return;
-
-      try {
-        const { error } = await supabaseClient.auth.signOut();
-        if (error) throw error;
-        setAuthMessage("You have logged out.");
-        await refreshAccount();
-      } catch (error) {
-        setAuthMessage(error.message || "Logout failed.", true);
-      }
-    });
-
-    if (supabaseClient) {
-      supabaseClient.auth.onAuthStateChange(() => {
-        // Defer the session refresh until after the auth event callback.
-        setTimeout(() => refreshAccount(), 0);
-      });
-    }
-
-    // =========================================================
-    // CUSTOMER ENQUIRY
-    // Saves to the existing public.customer_enquiries table.
-    // Required columns: name, phone, service, area, message.
-    // =========================================================
-
-    document.getElementById("enquiry-form").addEventListener("submit", async event => {
-      event.preventDefault();
-
-      if (!supabaseClient) {
-        setEnquiryMessage("Connect your Supabase project first by adding your Project URL and publishable key.", true);
-        return;
-      }
-
-      const name = document.getElementById("customer-name").value.trim();
-      const phone = document.getElementById("customer-phone").value.trim();
-      const area = document.getElementById("customer-area").value.trim();
-      const service = document.getElementById("customer-service").value;
-      let message = document.getElementById("customer-message").value.trim();
-
-      if (!name || !phone || !service) {
-        setEnquiryMessage("Please complete your name, phone number and service.", true);
-        return;
-      }
-
-      if (service === "Multiple Services from Cart" && cart.length) {
-        message = "Requested services: " + cart.join(", ") +
-          (message ? "\n" + message : "");
-      }
-
-      const button = document.getElementById("submit-enquiry");
-      button.disabled = true;
-      button.textContent = "Sending enquiry...";
-
-      try {
-        const { error } = await supabaseClient
-          .from("customer_enquiries")
-          .insert([{
-            name,
-            phone,
-            service,
-            area: area || null,
-            message: message || null
-          }]);
-
-        if (error) throw error;
-
-        const whatsappText =
-          "Hello Megacity Pest Control Services." +
-          "\nName: " + name +
-          "\nPhone: " + phone +
-          "\nService: " + service +
-          "\nArea: " + area +
-          "\nDetails: " + message;
-
-        if (/^\d{10,15}$/.test(BUSINESS_WHATSAPP) &&
-            !BUSINESS_WHATSAPP.includes("X")) {
-          const waURL = "https://wa.me/" + BUSINESS_WHATSAPP +
-            "?text=" + encodeURIComponent(whatsappText);
-
-          document.getElementById("whatsapp-link").href = waURL;
-          document.getElementById("floating-whatsapp").href = waURL;
-        }
-
-        setEnquiryMessage("Your enquiry was saved successfully. Thank you!");
-
-        document.getElementById("enquiry-form").reset();
-        clearCart();
-      } catch (error) {
-        setEnquiryMessage(
-          "The enquiry could not be saved: " +
-          (error.message || "Unknown error") +
-          ". Check your table name and Supabase insert policy.",
-          true
-        );
-      } finally {
-        button.disabled = false;
-        button.textContent = "Submit Enquiry →";
-      }
-    });
-
-    // =========================================================
-    // BUSINESS CONTACT LINKS
-    // =========================================================
-
-    function configureBusinessLinks() {
-      const validWhatsApp = /^\d{10,15}$/.test(BUSINESS_WHATSAPP) &&
-        !BUSINESS_WHATSAPP.includes("X");
-
-      if (validWhatsApp) {
-        const url = "https://wa.me/" + BUSINESS_WHATSAPP;
-
-        document.getElementById("whatsapp-link").href = url;
-        document.getElementById("footer-whatsapp").href = url;
-        document.getElementById("floating-whatsapp").href = url;
-      }
-
-      const phoneDigits = BUSINESS_PHONE.replace(/[^\d+]/g, "");
-      const validPhone = /^\+?\d{10,15}$/.test(phoneDigits) &&
-        !BUSINESS_PHONE.includes("X");
-
-      if (validPhone) {
-        document.getElementById("footer-phone").textContent = BUSINESS_PHONE;
-        document.getElementById("footer-phone").href = "tel:" + phoneDigits;
-      }
-    }
-
-    // =========================================================
-    // INITIALISE THE PAGE
-    // =========================================================
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    renderServices();
-    renderCart();
-    configureBusinessLinks();
-    refreshAccount();
-
-    if (!supabaseClient) {
-      setAuthMessage("Add your Supabase Project URL and publishable key to enable signup and login.");
-    }
-  </script>
+async function updateSession() {
+  if (!db) return;
+  const { data, error } = await db.auth.getSession();
+  if (error) {
+    showAuth(error.message);
+    return;
+  }
+  const user = data.session?.user;
+  document.getElementById("authForms").classList.toggle("hidden", !!user);
+  document.getElementById("signedIn").classList.toggle("hidden", !user);
+  document.getElementById("userEmail").textContent = user ? "Logged in as: " + user.email : "";
+}
+if (db) {
+  updateSession();
+  db.auth.onAuthStateChange(() => updateSession());
+}
+</script>
 </body>
 </html>

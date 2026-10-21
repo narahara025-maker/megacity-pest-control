@@ -1,413 +1,1623 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Megacity Pest Control Services in Hyderabad. Contact us for termite, cockroach, mosquito, rodent and other pest control services.">
-<title>Megacity Pest Control Services | Hyderabad</title>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<style>
-:root{--green:#126b42;--dark:#093b27;--gold:#e9b949;--light:#f3f8f3;--white:#fff}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;color:#23352b;background:#fff;line-height:1.6}
-header{background:var(--dark);color:white;padding:14px 5%;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px}
-.brand img{width:60px;height:60px;object-fit:contain;background:white;border-radius:10px}
-.brand h2{margin:0;font-size:19px}
-.brand small{color:#f5d77e}
-nav{display:flex;gap:15px;flex-wrap:wrap}
-nav a{color:white;text-decoration:none;font-weight:bold}
-button,.btn{border:0;background:var(--green);color:white;padding:11px 16px;border-radius:8px;cursor:pointer;font-weight:bold;text-decoration:none;display:inline-block}
-button:hover,.btn:hover{background:var(--dark)}
-.gold{background:var(--gold);color:#182b1e}
-.hero{background:linear-gradient(120deg,#093b27ee,#126b42df),url('') center/cover;color:white;padding:75px 7%;text-align:center}
-.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.2;margin:0 auto 18px;max-width:850px}
-.hero p{font-size:18px;max-width:680px;margin:0 auto 25px}
-section{padding:48px 6%}
-.heading{text-align:center;margin-bottom:28px}
-.heading h2{color:var(--dark);font-size:30px;margin-bottom:6px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.card{padding:22px;border:1px solid #e0e9e1;border-radius:14px;background:white;box-shadow:0 5px 18px #12341b0a}
-.card h3{color:var(--green);margin-top:0}
-.service-icon{font-size:36px}
-.soft{background:var(--light)}
-form{display:grid;gap:13px}
-input,select,textarea{width:100%;padding:12px;border:1px solid #cbd8cd;border-radius:8px;font:inherit;background:white}
-textarea{min-height:95px;resize:vertical}
-label{font-weight:bold;font-size:14px}
-.field{display:grid;gap:5px}
-.form-wrap{max-width:760px;margin:auto;background:white;padding:25px;border-radius:14px;box-shadow:0 5px 20px #12341b12}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-.full{grid-column:1/-1}
-.notice{padding:12px;background:#edf6ed;border-radius:8px;overflow-wrap:anywhere}
-.hidden{display:none!important}
-footer{background:var(--dark);color:white;text-align:center;padding:28px}
-footer a{color:#f5d77e}
-.cart-item{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid #ddd;padding:10px 0}
-.actions{display:flex;gap:10px;flex-wrap:wrap}
-.small{font-size:13px;color:#627066}
-#status{white-space:pre-wrap;overflow-wrap:anywhere}
-@media(max-width:600px){header{justify-content:center}nav{justify-content:center}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.hero{padding:55px 6%}section{padding:36px 5%}}
-</style>
-</head>
-<body>
-<header>
-  <div class="brand">
-    <img src="logo.png" alt="Megacity Pest Control logo"
-         onerror="this.style.display='none'">
-    <div><h2>Megacity Pest Control</h2><small>Safe spaces. Pest-free living.</small></div>
-  </div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#enquiry">Book service</a>
-    <a href="#account">Account</a>
-    <a href="#cart">Cart (<span id="cartCount">0</span>)</a>
-  </nav>
-</header>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#063c2e">
 
-<main>
-<section class="hero" id="home">
-  <h1>Reliable Pest Control for Your Home & Business</h1>
-  <p>Professional pest-control enquiry services in Hyderabad. Tell us your pest problem and our team can contact you to discuss the next steps.</p>
-  <div class="actions" style="justify-content:center">
-    <a class="btn gold" href="#enquiry">Request a Service</a>
-    <a class="btn" href="#services">Explore Services</a>
-  </div>
-</section>
+  <title>Megacity Pest Control Services | Hyderabad</title>
+  <meta name="description" content="Megacity Pest Control Services in Hyderabad. Contact us for pest control solutions for homes, offices, restaurants and commercial properties.">
+  <meta name="keywords" content="pest control Hyderabad, termite control, cockroach control, mosquito control, rat control">
+  
+  <link rel="icon" href="logo.png" type="image/png">
 
-<section id="services">
-  <div class="heading"><h2>Our Services</h2><p>Choose a service to add it to your cart or enquiry.</p></div>
-  <div class="grid">
-    <article class="card"><div class="service-icon">🪳</div><h3>Cockroach Control</h3><p>Enquire about cockroach treatment for your property.</p><button onclick="addCart('Cockroach Control')">Add to cart</button></article>
-    <article class="card"><div class="service-icon">🐜</div><h3>Termite Control</h3><p>Ask about termite inspection and treatment options.</p><button onclick="addCart('Termite Control')">Add to cart</button></article>
-    <article class="card"><div class="service-icon">🐀</div><h3>Rodent Control</h3><p>Enquire about rats and mice prevention.</p><button onclick="addCart('Rodent Control')">Add to cart</button></article>
-    <article class="card"><div class="service-icon">🦟</div><h3>Mosquito Control</h3><p>Ask about mosquito management for your property.</p><button onclick="addCart('Mosquito Control')">Add to cart</button></article>
-    <article class="card"><div class="service-icon">🛏️</div><h3>Bed Bug Control</h3><p>Discuss bed bug treatment for rooms and furniture.</p><button onclick="addCart('Bed Bug Control')">Add to cart</button></article>
-    <article class="card"><div class="service-icon">🏠</div><h3>General Pest Control</h3><p>Tell us about other pest issues at your home or business.</p><button onclick="addCart('General Pest Control')">Add to cart</button></article>
-  </div>
-</section>
-
-<section class="soft" id="cart">
-  <div class="heading"><h2>Your Service Cart</h2><p>Your selections are stored in this browser only, until you submit an enquiry.</p></div>
-  <div class="form-wrap">
-    <div id="cartItems"></div>
-    <div class="actions" style="margin-top:15px">
-      <button onclick="clearCart()">Clear cart</button>
-      <button class="gold" onclick="useCart()">Use services in enquiry form</button>
-    </div>
-    <p class="small">Prices are confirmed after inspection or discussion. Adding a service does not make a payment or booking.</p>
-  </div>
-</section>
-
-<section id="enquiry">
-  <div class="heading"><h2>Request a Service</h2><p>Submit your details so the business can contact you.</p></div>
-  <div class="form-wrap">
-    <form id="enquiryForm">
-      <div class="form-grid">
-        <div class="field"><label for="name">Full name *</label><input id="name" name="name" required maxlength="100" autocomplete="name"></div>
-        <div class="field"><label for="phone">Mobile number *</label><input id="phone" name="phone" required type="tel" maxlength="20" autocomplete="tel"></div>
-        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" maxlength="150" autocomplete="email"></div>
-        <div class="field"><label for="area">Area / locality *</label><input id="area" name="area" required maxlength="150"></div>
-        <div class="field full"><label for="address">Full address</label><textarea id="address" name="address" maxlength="1000"></textarea></div>
-        <div class="field"><label for="pest">Pest / service *</label>
-          <select id="pest" name="pest" required>
-            <option value="">Choose a service</option>
-            <option>Termite</option><option>Cockroach</option><option>Rodent</option>
-            <option>Mosquito</option><option>Bed Bug</option><option>General Pest Control</option><option>Other</option>
-          </select>
-        </div>
-        <div class="field"><label for="property">Property type</label>
-          <select id="property" name="property">
-            <option value="">Select property</option><option>House</option><option>Apartment</option><option>Office</option><option>Restaurant</option><option>Shop</option><option>Warehouse</option><option>Other</option>
-          </select>
-        </div>
-        <div class="field"><label for="date">Preferred date</label><input id="date" name="date" type="date"></div>
-        <div class="field"><label for="time">Preferred time</label>
-          <select id="time" name="time"><option value="">No preference</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select>
-        </div>
-        <div class="field full"><label for="message">Additional details</label><textarea id="message" name="message" maxlength="2000" placeholder="Describe your pest problem..."></textarea></div>
-      </div>
-      <button type="submit" id="submitBtn">Submit Enquiry</button>
-      <p id="status" role="status" aria-live="polite"></p>
-    </form>
-  </div>
-</section>
-
-<section class="soft" id="account">
-  <div class="heading"><h2>Customer Account</h2><p>Create an account or log in to your account.</p></div>
-  <div class="form-wrap">
-    <p id="authStatus" class="notice" role="status" aria-live="polite">Connect your Supabase project to enable account features.</p>
-    <div id="authForms">
-      <form id="signupForm">
-        <h3>Create an account</h3>
-        <div class="field"><label for="signupEmail">Email</label><input id="signupEmail" type="email" required autocomplete="email"></div>
-        <div class="field"><label for="signupPassword">Password (at least 6 characters)</label><input id="signupPassword" type="password" required minlength="6" autocomplete="new-password"></div>
-        <button type="submit">Sign up</button>
-      </form>
-      <hr style="margin:25px 0;border:0;border-top:1px solid #ddd">
-      <form id="loginForm">
-        <h3>Log in</h3>
-        <div class="field"><label for="loginEmail">Email</label><input id="loginEmail" type="email" required autocomplete="email"></div>
-        <div class="field"><label for="loginPassword">Password</label><input id="loginPassword" type="password" required autocomplete="current-password"></div>
-        <button type="submit">Log in</button>
-        <button type="button" onclick="resetPassword()">Forgot password?</button>
-      </form>
-    </div>
-    <div id="signedIn" class="hidden">
-      <p id="userEmail"></p>
-      <button onclick="logout()">Log out</button>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <h3>Megacity Pest Control Services</h3>
-  <p>Serving homes and businesses in Hyderabad.</p>
-  <p><a href="#enquiry">Request an enquiry</a> · <a href="#services">Our services</a></p>
-  <p class="small" style="color:#d8e7dc">Treatment, availability and prices are confirmed individually. Submitting an enquiry is not a confirmed appointment.</p>
-</footer>
-
-<script>
-/* SUPABASE CONFIGURATION */
-const SUPABASE_URL = "https://waygnxqugnttsbhihmbw.supabase.co";
-const SUPABASE_KEY = "sb_publishable_xWwVbHfvssL-xN_aejhRSA_WaHelaAd";/* Optional: enter your WhatsApp number with country code, digits only.
-   Example format for India: 91 followed by the 10-digit number. */
-const BUSINESS_WHATSAPP = "";
-
-let db = null;
-let cart = JSON.parse(localStorage.getItem("megacityCart") || "[]");
-
-const statusBox = document.getElementById("status");
-const authStatus = document.getElementById("authStatus");
-
-function showAuth(message) {
-  authStatus.textContent = message;
-}
-function showStatus(message) {
-  statusBox.textContent = message;
-}
-function client() {
-  if (!db) throw new Error("Supabase is not configured. Add your publishable key in index.html and save the file.");
-  return db;
-}
-
-/* Cart: local to this browser; not a payment system. */
-function saveCart() {
-  localStorage.setItem("megacityCart", JSON.stringify(cart));
-  document.getElementById("cartCount").textContent = cart.length;
-  const area = document.getElementById("cartItems");
-  area.replaceChildren();
-  if (!cart.length) {
-    area.textContent = "Your cart is empty.";
-    return;
-  }
-  cart.forEach((item, index) => {
-    const row = document.createElement("div");
-    row.className = "cart-item";
-    const name = document.createElement("span");
-    name.textContent = item;
-    const remove = document.createElement("button");
-    remove.textContent = "Remove";
-    remove.type = "button";
-    remove.onclick = () => { cart.splice(index, 1); saveCart(); };
-    row.append(name, remove);
-    area.append(row);
-  });
-}
-function addCart(name) {
-  cart.push(name);
-  saveCart();
-  alert(name + " added to your cart.");
-}
-function clearCart() {
-  cart = [];
-  saveCart();
-}
-function useCart() {
-  if (cart.length) {
-    const select = document.getElementById("pest");
-    const known = cart[0].replace(" Control", "");
-    const match = [...select.options].find(o => o.text.toLowerCase().includes(known.toLowerCase()));
-    if (match) select.value = match.value;
-    document.getElementById("message").value =
-      "Services selected: " + [...cart].join(", ") +
-      (document.getElementById("message").value ? "\n" + document.getElementById("message").value : "");
-  }
-  location.hash = "enquiry";
-}
-saveCart();
-
-/* Read enquiry details if the page was opened with form parameters. */
-const params = new URLSearchParams(location.search);
-for (const field of ["name","area","address","email","date","time","message"]) {
-  const el = document.getElementById(field);
-  const value = params.get(field);
-  if (el && value && !el.value) el.value = value;
-}
-const mobileParam = params.get("mobile");
-if (mobileParam) document.getElementById("phone").value = mobileParam;
-const pestParam = params.get("pest");
-if (pestParam) {
-  const el = document.getElementById("pest");
-  const opt = [...el.options].find(o => o.text.toLowerCase().includes(pestParam.toLowerCase()));
-  if (opt) el.value = opt.value;
-}
-const propertyParam = params.get("property");
-if (propertyParam) document.getElementById("property").value = propertyParam;
-
-/* Initialise Supabase without crashing the rest of the page. */
-if (window.supabase && SUPABASE_URL.startsWith("https://") &&
-    SUPABASE_KEY !== "PASTE_YOUR_PUBLISHABLE_KEY_HERE" &&
-    SUPABASE_KEY.trim().length > 10) {
-  db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-  showAuth("Supabase configured. You can create an account or log in.");
-} else {
-  showAuth("Connect your Supabase project first by adding your Project URL and publishable key in the code.");
-}
-
-/* Save enquiry to the existing customer_enquiries table.
-   Current columns used: name, phone, service, area, message. */
-document.getElementById("enquiryForm").addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const btn = document.getElementById("submitBtn");
-  btn.disabled = true;
-  showStatus("Submitting your enquiry...");
-  try {
-    const form = new FormData(event.currentTarget);
-    const details = [
-      form.get("message") ? "Details: " + form.get("message") : "",
-      form.get("email") ? "Email: " + form.get("email") : "",
-      form.get("address") ? "Address: " + form.get("address") : "",
-      form.get("property") ? "Property: " + form.get("property") : "",
-      form.get("date") ? "Preferred date: " + form.get("date") : "",
-      form.get("time") ? "Preferred time: " + form.get("time") : ""
-    ].filter(Boolean).join("\n");
-
-    const record = {
-      name: String(form.get("name")).trim(),
-      phone: String(form.get("phone")).trim(),
-      service: String(form.get("pest") || "").trim(),
-      area: String(form.get("area") || "").trim(),
-      message: details || null
-    };
-
-    const { error } = await client()
-      .from("customer_enquiries")
-      .insert(record);
-
-    if (error) throw error;
-    showStatus("Thank you! Your enquiry has been saved successfully.");
-
-    if (BUSINESS_WHATSAPP) {
-      const text = "New pest-control enquiry\n" +
-        "Name: " + record.name + "\nMobile: " + record.phone +
-        "\nService: " + record.service + "\nArea: " + record.area +
-        "\n" + details;
-      const link = "https://wa.me/" + BUSINESS_WHATSAPP + "?text=" + encodeURIComponent(text);
-      const a = document.createElement("a");
-      a.href = link;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      a.className = "btn";
-      a.textContent = "Send enquiry to WhatsApp";
-      statusBox.append(document.createElement("br"), a);
+  <style>
+    :root {
+      --green: #063c2e;
+      --green-light: #08764f;
+      --red: #c63827;
+      --cream: #fffaf0;
+      --gold: #ffcf65;
+      --text: #26332d;
+      --white: #ffffff;
+      --shadow: 0 8px 25px rgba(0,0,0,.09);
     }
-document.getElementById("enquiryForm").reset();
-showStatus("Thank you! Your enquiry has been saved successfully.");    cart = [];
-    saveCart();
-  } catch (error) {
-    console.error(error);
-    showStatus("Enquiry was not saved: " + (error.message || "Unknown error") +
-      "\nCheck your Supabase key, table name, and table permissions.");
-  } finally {
-    btn.disabled = false;
-  }
-});
 
-/* Sign up */
-document.getElementById("signupForm").addEventListener("submit", async (event) => {
-  event.preventDefault();
-  try {
-    showAuth("Creating your account...");
-    const email = document.getElementById("signupEmail").value.trim();
-    const password = document.getElementById("signupPassword").value;
-    const { data, error } = await client().auth.signUp({
-      email, password,
-      options: { emailRedirectTo: location.origin + location.pathname + "#account" }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button, .btn {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1150px, 92%);
+      margin: auto;
+    }
+
+    /* TOP BAR */
+
+    .topbar {
+      background: var(--green);
+      color: #fff;
+      padding: 8px 0;
+      font-size: 13px;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* HEADER AND LOGO */
+
+    header {
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    }
+
+    .navbar {
+      min-height: 86px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      color: var(--green);
+      font-size: clamp(16px, 2.3vw, 23px);
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: .4px;
+    }
+
+    .brand-name small {
+      display: block;
+      color: var(--red);
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-top: 5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--green-light);
+    }
+
+    .nav-cta {
+      background: var(--red);
+      color: #fff !important;
+      padding: 10px 16px;
+      border-radius: 7px;
+    }
+
+    /* HERO */
+
+    .hero {
+      background:
+        radial-gradient(circle at 85% 20%, rgba(255,207,101,.2), transparent 28%),
+        linear-gradient(125deg, #063c2e, #0b6245);
+      color: #fff;
+      padding: 80px 0;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 45px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,.12);
+      color: var(--gold);
+      border: 1px solid rgba(255,255,255,.22);
+      padding: 7px 13px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: #e4f0e9;
+      max-width: 620px;
+      margin-bottom: 27px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 8px;
+      padding: 13px 20px;
+      font-weight: 800;
+      transition: .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(.96);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--green);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,.65);
+      color: #fff;
+      background: transparent;
+    }
+
+    .hero-card {
+      background: var(--cream);
+      color: var(--green);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 18px 45px rgba(0,0,0,.2);
+      text-align: center;
+    }
+
+    .hero-card img {
+      width: min(100%, 300px);
+      max-height: 280px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .hero-card h2 {
+      font-size: 23px;
+      margin-top: 12px;
+    }
+
+    .hero-card p {
+      color: #4a5d51;
+      font-size: 14px;
+      margin: 8px 0 0;
+    }
+
+    /* BENEFITS */
+
+    .benefits {
+      padding: 24px 0;
+      background: #f4f8f4;
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .benefit {
+      text-align: center;
+      padding: 12px;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .benefit span {
+      display: block;
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+
+    /* GENERAL SECTIONS */
+
+    section {
+      padding: 70px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 38px;
+    }
+
+    .section-heading .kicker {
+      color: var(--red);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      color: var(--green);
+      font-size: clamp(28px, 4vw, 39px);
+      line-height: 1.2;
+      margin: 10px 0;
+    }
+
+    .section-heading p {
+      color: #68746d;
+    }
+
+    /* SERVICES */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      border: 1px solid #e5ebe6;
+      border-radius: 14px;
+      padding: 25px;
+      box-shadow: var(--shadow);
+      background: #fff;
+      transition: transform .2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      display: grid;
+      place-items: center;
+      width: 57px;
+      height: 57px;
+      border-radius: 13px;
+      background: #e9f5ed;
+      font-size: 29px;
+      margin-bottom: 16px;
+    }
+
+    .service-card h3 {
+      color: var(--green);
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .service-card p {
+      color: #68746d;
+      font-size: 14px;
+      margin-bottom: 17px;
+    }
+
+    .text-link {
+      color: var(--green-light);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      background: var(--cream);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .about-visual {
+      background: #e9f1e7;
+      border-radius: 20px;
+      min-height: 320px;
+      display: grid;
+      place-items: center;
+      padding: 25px;
+    }
+
+    .about-visual img {
+      width: min(100%, 320px);
+      object-fit: contain;
+    }
+
+    .about-copy h2 {
+      color: var(--green);
+      font-size: clamp(27px, 4vw, 38px);
+      line-height: 1.2;
+      margin: 10px 0 18px;
+    }
+
+    .about-copy p {
+      color: #5f6e64;
+      margin-bottom: 15px;
+    }
+
+    .check-list {
+      list-style: none;
+      margin-top: 18px;
+    }
+
+    .check-list li {
+      margin: 10px 0;
+      font-weight: 700;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      color: var(--green-light);
+      font-weight: 900;
+      margin-right: 10px;
+    }
+
+    /* PROCESS */
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .process-card {
+      text-align: center;
+      border: 1px solid #e5ebe6;
+      border-radius: 14px;
+      padding: 27px 22px;
+    }
+
+    .process-number {
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      font-weight: 900;
+      font-size: 21px;
+      margin: 0 auto 15px;
+    }
+
+    .process-card h3 {
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+
+    .process-card p {
+      color: #68746d;
+      font-size: 14px;
+    }
+
+    /* ENQUIRY FORM */
+
+    .contact-section {
+      background: #f4f8f4;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 35px;
+      align-items: start;
+    }
+
+    .contact-info {
+      background: var(--green);
+      color: #fff;
+      padding: 30px;
+      border-radius: 16px;
+    }
+
+    .contact-info h2 {
+      font-size: 29px;
+      margin-bottom: 14px;
+    }
+
+    .contact-info > p {
+      color: #d9e9df;
+      margin-bottom: 25px;
+    }
+
+    .contact-detail {
+      padding: 15px 0;
+      border-top: 1px solid rgba(255,255,255,.17);
+    }
+
+    .contact-detail strong {
+      display: block;
+      color: var(--gold);
+      margin-bottom: 3px;
+    }
+
+    .contact-form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form h2 {
+      color: var(--green);
+      margin-bottom: 6px;
+      font-size: 26px;
+    }
+
+    .form-intro {
+      color: #68746d;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      color: #34483c;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid #d8e1da;
+      border-radius: 7px;
+      padding: 12px;
+      color: #24352a;
+      background: #fff;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--green-light);
+      box-shadow: 0 0 0 3px rgba(8,118,79,.1);
+    }
+
+    .field textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 18px;
+      background: var(--green);
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .submit-btn:disabled {
+      opacity: .65;
+      cursor: wait;
+    }
+
+    .form-status {
+      margin-top: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .form-status.success {
+      color: #08764f;
+    }
+
+    .form-status.error {
+      color: #b42318;
+    }
+
+    .privacy-note {
+      font-size: 12px;
+      color: #6d796f;
+      margin-top: 12px;
+    }
+
+    /* FAQ */
+
+    .faq-list {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .faq-list details {
+      border: 1px solid #e0e8e1;
+      border-radius: 10px;
+      padding: 17px 20px;
+      margin-bottom: 12px;
+    }
+
+    .faq-list summary {
+      color: var(--green);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .faq-list details p {
+      margin-top: 12px;
+      color: #68746d;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #052d23;
+      color: #fff;
+      padding: 38px 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 28px;
+    }
+
+    .footer-brand {
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    footer p, footer li {
+      color: #d2e2d8;
+      font-size: 14px;
+    }
+
+    footer h3 {
+      margin-bottom: 12px;
+      color: var(--gold);
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer li {
+      margin: 7px 0;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,.17);
+      padding-top: 18px;
+      text-align: center;
+      color: #d2e2d8;
+      font-size: 12px;
+    }
+
+    /* FLOATING CONTACT BUTTONS */
+
+    .contact-buttons {
+      position: fixed;
+      right: 16px;
+      bottom: 18px;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 150px;
+      padding: 12px 17px;
+      border-radius: 30px;
+      color: #fff;
+      font-weight: 800;
+      box-shadow: 0 4px 14px rgba(0,0,0,.22);
+      transition: transform .2s;
+    }
+
+    .contact-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .whatsapp-button {
+      background: #168c4a;
+    }
+
+    .call-button {
+      background: #123d2a;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 850px) {
+      .navbar {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        justify-content: center;
+        width: 100%;
+        gap: 15px;
+        padding-bottom: 8px;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 55px 0;
+      }
+
+      .hero-card {
+        max-width: 480px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar-inner {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .brand img {
+        width: 58px;
+        height: 58px;
+      }
+
+      .brand-name {
+        font-size: 16px;
+      }
+
+      .brand-name small {
+        font-size: 10px;
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 12px;
+      }
+
+      .nav-cta {
+        padding: 8px 11px;
+      }
+
+      .benefit-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .services-grid,
+      .process-grid,
+      .form-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      section {
+        padding: 52px 0;
+      }
+
+      .contact-form,
+      .contact-info {
+        padding: 22px;
+      }
+
+      .contact-buttons {
+        right: 10px;
+        bottom: 12px;
+      }
+
+      .contact-button {
+        min-width: 132px;
+        padding: 10px 13px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span>📍 Serving Hyderabad and surrounding areas</span>
+      <span>🛡️ Pest control solutions for homes and businesses</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container navbar">
+
+      <a class="brand" href="#home" aria-label="Megacity Pest Control home">
+        <img src="logo.png" alt="Megacity Pest Control logo"
+             onerror="this.style.display='none'">
+        <span class="brand-name">
+          MEGACITY PEST CONTROL
+          <small>SERVICES · HYDERABAD</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="nav-cta">Get a Quote</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+
+        <div>
+          <span class="eyebrow">YOUR LOCAL PEST CONTROL SERVICE</span>
+
+          <h1>
+            Protect Your Space.<br>
+            <span>Keep Pests Away.</span>
+          </h1>
+
+          <p>
+            Welcome to Megacity Pest Control Services. Contact us for
+            pest control solutions for houses, apartments, offices,
+            restaurants, shops and other properties in Hyderabad.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#contact">
+              Request a Service
+            </a>
+
+            <a class="btn btn-outline" href="#services">
+              Explore Services
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img src="logo.png" alt="Megacity Pest Control Services logo">
+          <h2>Megacity Pest Control</h2>
+          <p>Helping you maintain a cleaner, more comfortable space.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+
+    <div class="benefits">
+      <div class="container benefit-grid">
+
+        <div class="benefit">
+          <span>🏠</span>
+          Home Pest Control
+        </div>
+
+        <div class="benefit">
+          <span>🏢</span>
+          Commercial Services
+        </div>
+
+        <div class="benefit">
+          <span>📅</span>
+          Appointment Requests
+        </div>
+
+        <div class="benefit">
+          <span>📞</span>
+          Direct Contact
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+
+    <section id="services">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="kicker">Our Services</span>
+          <h2>Pest Control for Different Needs</h2>
+          <p>
+            Choose the service you need and submit an enquiry.
+            We will use your details to understand your requirements.
+          </p>
+        </div>
+
+        <div class="services-grid">
+
+          <article class="service-card">
+            <div class="service-icon">🐜</div>
+            <h3>Termite Control</h3>
+            <p>
+              Treatment options for termite problems in homes,
+              buildings and other properties.
+            </p>
+            <a class="text-link service-select" href="#contact"
+               data-service="Termite Control">Enquire Now →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🪳</div>
+            <h3>Cockroach Control</h3>
+            <p>
+              Pest control solutions for cockroach problems in
+              kitchens, homes and workplaces.
+            </p>
+            <a class="text-link service-select" href="#contact"
+               data-service="Cockroach Control">Enquire Now →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🦟</div>
+            <h3>Mosquito Control</h3>
+            <p>
+              Ask about suitable mosquito control options for
+              indoor and outdoor spaces.
+            </p>
+            <a class="text-link service-select" href="#contact"
+               data-service="Mosquito Control">Enquire Now →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🐀</div>
+            <h3>Rat and Rodent Control</h3>
+            <p>
+              Help address rodent activity in residential and
+              commercial properties.
+            </p>
+            <a class="text-link service-select" href="#contact"
+               data-service="Rat and Rodent Control">Enquire Now →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🛏️</div>
+            <h3>Bed Bug Control</h3>
+            <p>
+              Enquire about treatment options for bed bugs in
+              bedrooms and furnished spaces.
+            </p>
+            <a class="text-link service-select" href="#contact"
+               data-service="Bed Bug Control">Enquire Now →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🏬</div>
+            <h3>Commercial Pest Control</h3>
+            <p>
+              Pest management enquiries for offices, restaurants,
+              shops, warehouses and other businesses.
+            </p>
+            <a class="text-link service-select" href="#contact"
+               data-service="Commercial Pest Control">Enquire Now →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+
+        <div class="about-visual">
+          <img src="logo.png" alt="Megacity Pest Control company logo">
+        </div>
+
+        <div class="about-copy">
+          <span class="kicker">About Our Company</span>
+          <h2>Your Pest Control Enquiry Starts Here</h2>
+
+          <p>
+            Megacity Pest Control Services helps customers in Hyderabad
+            enquire about pest control for residential and commercial
+            properties.
+          </p>
+
+          <p>
+            Tell us about the pest problem, your location and the type
+            of property. Our team can then understand your requirements
+            and discuss the next steps with you.
+          </p>
+
+          <ul class="check-list">
+            <li>Residential pest control enquiries</li>
+            <li>Commercial property enquiries</li>
+            <li>Convenient online enquiry form</li>
+            <li>Direct WhatsApp and calling options</li>
+          </ul>
+
+          <br>
+          <a class="btn btn-gold" style="background:var(--green);color:#fff"
+             href="#contact">Contact Our Team</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+
+    <section>
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="kicker">Simple Process</span>
+          <h2>How to Request a Service</h2>
+          <p>Send us your details so we can understand your requirements.</p>
+        </div>
+
+        <div class="process-grid">
+
+          <article class="process-card">
+            <div class="process-number">1</div>
+            <h3>Choose a Service</h3>
+            <p>Select the pest control service you are enquiring about.</p>
+          </article>
+
+          <article class="process-card">
+            <div class="process-number">2</div>
+            <h3>Submit Your Details</h3>
+            <p>Enter your name, phone number and property location.</p>
+          </article>
+
+          <article class="process-card">
+            <div class="process-number">3</div>
+            <h3>Discuss the Request</h3>
+            <p>Contact our team by phone or WhatsApp to discuss the next step.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+
+    <section class="contact-section" id="contact">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="kicker">Contact Us</span>
+          <h2>Request a Pest Control Service</h2>
+          <p>
+            Fill in the form below. Your enquiry will be submitted
+            to our database if the connection is configured correctly.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+
+          <aside class="contact-info">
+            <h2>Let's Talk</h2>
+
+            <p>
+              Tell us what pest problem you are facing.
+              You can also contact us directly using the buttons on this page.
+            </p>
+
+            <div class="contact-detail">
+              <strong>Company</strong>
+              Megacity Pest Control Services
+            </div>
+
+            <div class="contact-detail">
+              <strong>Service Area</strong>
+              Hyderabad, Telangana
+            </div>
+
+            <div class="contact-detail">
+              <strong>WhatsApp</strong>
+              <a id="contactWhatsapp" href="#contact">
+                Chat with our team
+              </a>
+            </div>
+
+            <div class="contact-detail">
+              <strong>Call Us</strong>
+              <a id="contactCall" href="#contact">
+                Call our team
+              </a>
+            </div>
+          </aside>
+
+          <div class="contact-form">
+            <h2>Customer Enquiry Form</h2>
+            <p class="form-intro">
+              Fields marked * are required.
+            </p>
+
+            <form id="enquiryForm">
+
+              <div class="form-grid">
+
+                <div class="field">
+                  <label for="name">Full Name *</label>
+                  <input id="name" name="name" type="text"
+                         autocomplete="name" maxlength="100"
+                         placeholder="Enter your name" required>
+                </div>
+
+                <div class="field">
+                  <label for="phone">Mobile Number *</label>
+                  <input id="phone" name="phone" type="tel"
+                         autocomplete="tel" inputmode="tel"
+                         maxlength="16" placeholder="Enter mobile number"
+                         pattern="[+]?[0-9 ()-]{10,16}" required>
+                </div>
+
+                <div class="field">
+                  <label for="email">Email Address</label>
+                  <input id="email" name="email" type="email"
+                         autocomplete="email" maxlength="150"
+                         placeholder="Enter email (optional)">
+                </div>
+
+                <div class="field">
+                  <label for="service">Pest Control Service *</label>
+                  <select id="service" name="service" required>
+                    <option value="">Select a service</option>
+                    <option>Termite Control</option>
+                    <option>Cockroach Control</option>
+                    <option>Mosquito Control</option>
+                    <option>Rat and Rodent Control</option>
+                    <option>Bed Bug Control</option>
+                    <option>Ant Control</option>
+                    <option>General Pest Control</option>
+                    <option>Commercial Pest Control</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="area">Area / Locality *</label>
+                  <input id="area" name="area" type="text"
+                         maxlength="150" placeholder="e.g. Shamshabad"
+                         required>
+                </div>
+
+                <div class="field">
+                  <label for="property">Property Type</label>
+                  <select id="property" name="property">
+                    <option value="">Select property type</option>
+                    <option>House</option>
+                    <option>Apartment</option>
+                    <option>Office</option>
+                    <option>Restaurant</option>
+                    <option>Shop</option>
+                    <option>Warehouse</option>
+                    <option>School</option>
+                    <option>Hospital / Clinic</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="date">Preferred Date</label>
+                  <input id="date" name="date" type="date">
+                </div>
+
+                <div class="field">
+                  <label for="time">Preferred Time</label>
+                  <select id="time" name="time">
+                    <option value="">Select a time</option>
+                    <option>Morning</option>
+                    <option>Afternoon</option>
+                    <option>Evening</option>
+                  </select>
+                </div>
+
+                <div class="field full">
+                  <label for="address">Full Address</label>
+                  <input id="address" name="address" type="text"
+                         autocomplete="street-address" maxlength="300"
+                         placeholder="House number, street, landmark">
+                </div>
+
+                <div class="field full">
+                  <label for="message">Describe Your Pest Problem</label>
+                  <textarea id="message" name="message" maxlength="2000"
+                            placeholder="Tell us about the pest problem (optional)"></textarea>
+                </div>
+
+              </div>
+
+              <button class="btn submit-btn" id="submitButton" type="submit">
+                Submit Enquiry
+              </button>
+
+              <p id="formStatus" class="form-status"
+                 role="status" aria-live="polite"></p>
+
+              <p class="privacy-note">
+                Your information is used to respond to your enquiry.
+                Please do not submit passwords or payment details.
+              </p>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+
+    <section id="faq">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="kicker">FAQs</span>
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-list">
+
+          <details>
+            <summary>Which areas do you serve?</summary>
+            <p>
+              We accept enquiries from Hyderabad and surrounding areas.
+              Contact us to discuss service availability for your location.
+            </p>
+          </details>
+
+          <details>
+            <summary>How can I request a pest control service?</summary>
+            <p>
+              Complete the enquiry form on this website, or use the
+              WhatsApp and call buttons to contact us directly.
+            </p>
+          </details>
+
+          <details>
+            <summary>How much does pest control cost?</summary>
+            <p>
+              The price may depend on the type of pest, property size
+              and treatment required. Contact us to discuss your needs
+              and request a quote.
+            </p>
+          </details>
+
+          <details>
+            <summary>Will my enquiry be saved?</summary>
+            <p>
+              The form submits your enquiry to the configured Supabase
+              database. You will see a success message when the database
+              confirms that the enquiry has been saved.
+            </p>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <div class="footer-brand">MEGACITY PEST CONTROL</div>
+          <p>
+            Pest control enquiry services for homes and businesses
+            in Hyderabad, Telangana.
+          </p>
+        </div>
+
+        <div>
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Submit Enquiry</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li>Hyderabad, Telangana</li>
+            <li><a id="footerWhatsapp" href="#contact">WhatsApp Us</a></li>
+            <li><a id="footerCall" href="#contact">Call Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        © <span id="year"></span> Megacity Pest Control Services.
+        All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP AND CALL BUTTONS -->
+
+  <div class="contact-buttons">
+
+    <a class="contact-button whatsapp-button"
+       id="whatsappLink"
+       href="#contact"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Chat with Megacity Pest Control on WhatsApp">
+      <span aria-hidden="true">☏</span>
+      WhatsApp
+    </a>
+
+    <a class="contact-button call-button"
+       id="callLink"
+       href="#contact"
+       aria-label="Call Megacity Pest Control">
+      <span aria-hidden="true">☎</span>
+      Call Now
+    </a>
+
+  </div>
+
+  <!-- SUPABASE LIBRARY -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    /*
+      ==========================================
+      MEGACITY PEST CONTROL - WEBSITE SETTINGS
+      ==========================================
+
+      1. Paste your existing Supabase project URL.
+      2. Paste your Supabase PUBLISHABLE key.
+      3. Enter your business phone number below.
+
+      Never use a Supabase service_role or secret
+      key in public website HTML.
+    */
+
+    const SUPABASE_URL = "https://waygnxqugnttsbhihmbw.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE";
+
+    /*
+      Enter your Indian business phone number with
+      country code 91, without +, spaces or hyphens.
+
+      Example format: 919876543210
+      Replace the example with your real number.
+    */
+
+    const BUSINESS_PHONE = "91XXXXXXXXXX";
+
+    // ==========================================
+    // WHATSAPP AND DIRECT CALL CONFIGURATION
+    // ==========================================
+
+    const phoneIsConfigured = /^91[0-9]{10}$/.test(BUSINESS_PHONE);
+
+    const whatsappLink = document.getElementById("whatsappLink");
+    const callLink = document.getElementById("callLink");
+
+    const contactWhatsapp = document.getElementById("contactWhatsapp");
+    const contactCall = document.getElementById("contactCall");
+
+    const footerWhatsapp = document.getElementById("footerWhatsapp");
+    const footerCall = document.getElementById("footerCall");
+
+    if (phoneIsConfigured) {
+      const phoneForCall = "+" + BUSINESS_PHONE;
+
+      const whatsappUrl =
+        "https://wa.me/" + BUSINESS_PHONE +
+        "?text=" + encodeURIComponent(
+          "Hello Megacity Pest Control Services, I would like to enquire about pest control services."
+        );
+
+      [
+        whatsappLink,
+        contactWhatsapp,
+        footerWhatsapp
+      ].forEach(function(link) {
+        link.href = whatsappUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      });
+
+      [
+        callLink,
+        contactCall,
+        footerCall
+      ].forEach(function(link) {
+        link.href = "tel:" + phoneForCall;
+      });
+
+    } else {
+      [
+        whatsappLink,
+        callLink,
+        contactWhatsapp,
+        contactCall,
+        footerWhatsapp,
+        footerCall
+      ].forEach(function(link) {
+        link.addEventListener("click", function(event) {
+          event.preventDefault();
+          alert(
+            "Please add your real business phone number in the website settings."
+          );
+        });
+      });
+    }
+
+    // ==========================================
+    // SUPABASE CONNECTION
+    // ==========================================
+
+    let supabaseClient = null;
+
+    const supabaseKeyIsConfigured =
+      SUPABASE_PUBLISHABLE_KEY !==
+        "PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE" &&
+      SUPABASE_PUBLISHABLE_KEY.trim().length > 20;
+
+    if (window.supabase && supabaseKeyIsConfigured) {
+      try {
+        supabaseClient = window.supabase.createClient(
+          SUPABASE_URL,
+          SUPABASE_PUBLISHABLE_KEY
+        );
+      } catch (error) {
+        console.error("Supabase initialisation error:", error);
+      }
+    }
+
+    // ==========================================
+    // SERVICE BUTTONS: PRESELECT SERVICE
+    // ==========================================
+
+    document.querySelectorAll(".service-select").forEach(function(link) {
+      link.addEventListener("click", function() {
+        const selectedService = link.getAttribute("data-service");
+        const serviceSelect = document.getElementById("service");
+
+        const matchingOption = Array.from(serviceSelect.options).find(
+          option => option.value === selectedService
+        );
+
+        if (matchingOption) {
+          serviceSelect.value = selectedService;
+        } else if (selectedService === "Commercial Pest Control") {
+          serviceSelect.value = "Commercial Pest Control";
+        }
+
+        document.getElementById("name").focus({ preventScroll: true });
+      });
     });
-    if (error) throw error;
-    showAuth(data.session
-      ? "Account created and signed in."
-      : "Signup submitted. If email confirmation is enabled, check your inbox to confirm your account.");
-    updateSession();
-  } catch (error) {
-    showAuth("Signup error: " + error.message);
-  }
-});
 
-/* Log in */
-document.getElementById("loginForm").addEventListener("submit", async (event) => {
-  event.preventDefault();
-  try {
-    showAuth("Logging in...");
-    const email = document.getElementById("loginEmail").value.trim();
-    const password = document.getElementById("loginPassword").value;
-    const { error } = await client().auth.signInWithPassword({ email, password });
-    if (error) throw error;
-    showAuth("You are logged in.");
-    updateSession();
-  } catch (error) {
-    showAuth("Login error: " + error.message);
-  }
-});
+    // ==========================================
+    // ENQUIRY FORM: SAVE TO SUPABASE
+    // ==========================================
 
-async function resetPassword() {
-  const email = document.getElementById("loginEmail").value.trim();
-  if (!email) {
-    showAuth("Enter your email in the Log in email field first, then click Forgot password.");
-    return;
-  }
-  try {
-    const { error } = await client().auth.resetPasswordForEmail(email, {
-      redirectTo: location.origin + location.pathname + "#account"
+    const enquiryForm = document.getElementById("enquiryForm");
+    const submitButton = document.getElementById("submitButton");
+    const formStatus = document.getElementById("formStatus");
+
+    enquiryForm.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      formStatus.textContent = "";
+      formStatus.className = "form-status";
+
+      if (!enquiryForm.reportValidity()) {
+        return;
+      }
+
+      if (!supabaseClient) {
+        formStatus.textContent =
+          "Database is not configured. Check the Supabase publishable key in index.html.";
+        formStatus.classList.add("error");
+        return;
+      }
+
+      const formData = new FormData(enquiryForm);
+
+      const name = String(formData.get("name") || "").trim();
+      const phone = String(formData.get("phone") || "").trim();
+      const email = String(formData.get("email") || "").trim();
+      const service = String(formData.get("service") || "").trim();
+      const area = String(formData.get("area") || "").trim();
+      const property = String(formData.get("property") || "").trim();
+      const preferredDate = String(formData.get("date") || "").trim();
+      const preferredTime = String(formData.get("time") || "").trim();
+      const address = String(formData.get("address") || "").trim();
+      const customerMessage = String(formData.get("message") || "").trim();
+
+      if (!name || !phone || !service || !area) {
+        formStatus.textContent =
+          "Please complete all required fields.";
+        formStatus.classList.add("error");
+        return;
+      }
+
+      /*
+        This uses your existing table structure:
+        public.customer_enquiries
+
+        Existing columns:
+        name, phone, service, area, message
+
+        Other form details are stored together inside
+        the existing message column to avoid requiring
+        extra database columns.
+      */
+
+      const combinedMessage = [
+        "Email: " + (email || "Not provided"),
+        "Property type: " + (property || "Not specified"),
+        "Preferred date: " + (preferredDate || "Not specified"),
+        "Preferred time: " + (preferredTime || "Not specified"),
+        "Address: " + (address || "Not provided"),
+        "Customer message: " + (customerMessage || "Not provided")
+      ].join("\n");
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+      formStatus.textContent = "Please wait while we save your enquiry.";
+
+      try {
+        const { data, error } = await supabaseClient
+          .from("customer_enquiries")
+          .insert([
+            {
+              name: name,
+              phone: phone,
+              service: service,
+              area: area,
+              message: combinedMessage
+            }
+          ])
+          .select("id")
+          .single();
+
+        if (error) {
+          throw error;
+        }
+
+        formStatus.textContent =
+          "Thank you! Your enquiry has been saved successfully. " +
+          "Please contact us by WhatsApp or phone if you need to follow up.";
+
+        formStatus.classList.add("success");
+
+        enquiryForm.reset();
+
+      } catch (error) {
+        console.error("Enquiry submission error:", error);
+
+        formStatus.textContent =
+          "We could not confirm that your enquiry was saved. " +
+          "Please try again or contact us directly. " +
+          "If the problem continues, check your Supabase table permissions.";
+
+        formStatus.classList.add("error");
+
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Enquiry";
+      }
     });
-    if (error) throw error;
-    showAuth("If the email is registered, password reset instructions will be sent. Check your inbox.");
-  } catch (error) {
-    showAuth("Password reset error: " + error.message);
-  }
-}
 
-async function logout() {
-  try {
-    const { error } = await client().auth.signOut();
-    if (error) throw error;
-    showAuth("You have logged out.");
-    updateSession();
-  } catch (error) {
-    showAuth("Logout error: " + error.message);
-  }
-}
+    // CURRENT YEAR IN FOOTER
 
-async function updateSession() {
-  if (!db) return;
-  const { data, error } = await db.auth.getSession();
-  if (error) {
-    showAuth(error.message);
-    return;
-  }
-  const user = data.session?.user;
-  document.getElementById("authForms").classList.toggle("hidden", !!user);
-  document.getElementById("signedIn").classList.toggle("hidden", !user);
-  document.getElementById("userEmail").textContent = user ? "Logged in as: " + user.email : "";
-}
-if (db) {
-  updateSession();
-  db.auth.onAuthStateChange(() => updateSession());
-}
-</script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
 </body>
 </html>
+```
